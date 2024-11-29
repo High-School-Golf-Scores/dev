@@ -1,0 +1,490 @@
+models:
+  Player:
+    team_id: id foreign:teams
+    card_id: id foreign:cards
+    name: string
+    grad_year: integer
+    active: boolean
+    relationships:
+      belongsTo: Team, Card
+      hasMany: Stat
+
+  Coach:
+    team_id: id foreign:teams
+    name: string
+    active: bool
+    relationships:
+      belongsTo: Team
+      hasMany: Tournament
+
+
+  Team:
+    school_id: id foreign:schools
+    coach: string
+    logo: url
+    relationships:
+      belongsTo: School
+      hasMany: Player, Coach
+
+
+  School:
+    regional_id: id foreign:regionals
+    classification_id: id foreign:classifications
+    league_id: id foreign:leagues
+    name: string
+    address: string
+    city: string
+    state: string
+    zip: string
+    paid: boolean
+    relationships:
+      hasMany: Team, Tag
+      belongsTo: Regional, Classification, League
+
+  Regional:
+    name: string
+    timestamp: false
+    relationships:
+      hasMany: School
+
+  Classification:
+    name: string
+    timestamp: false
+    relationships:
+      hasMany: School
+
+  League:
+    name: string
+    timestamp: false
+    relationships:
+      hasMany: School
+
+  Tournament:
+    coach_id: id foreign:coaches
+    name: string
+    type: integer
+    cards: integer
+    relationships:
+      belongsTo: Coach
+      hasMany: Round, Course, Card, Tag
+  #
+  Course:
+    tournament_id: id foreign:tournaments
+    hole_id: id foreign:holes
+    name: string
+    rating: decimal
+    slope: decimal
+    tees: string
+    relationships:
+      belongsTo: Tournament
+      hasMany: Hole
+  #
+  Card:
+    tournament_id: id foreign:tournaments
+    round_id: id foreign:rounds
+    starting_hole: integer
+    tee_time: string
+    comment: string
+    relationships:
+      belongsTo: Round, Tournament
+      hasMany: Player
+  #
+  Hole:
+    course_id: id foreign:courses
+    number: integer
+    par: integer
+    distance: integer
+    relationships:
+      belongsTo: Course
+  #
+  Round:
+    tournament_id: id foreign:tournaments
+    number: integer
+    relationships:
+      belongsTo: Tournament
+      hasMany: Card
+  #
+  Stat:
+    player_id: id foreign:players
+    gir: integer
+    putts: integer
+    fairways: integer
+    relationships:
+      belongsTo: Player
+
+  Tag:
+    school_id: id foreign:schools
+    tournament_id: id foreign:tournaments
+    name: string
+    relationships:
+      belongsToMany: School, Tournament
+    timestamp: false
+
+  Blog:
+    title: string:400
+    content: longtext
+    remark: string:100 nullable
+    user_id: id foreign
+    published_at: nullable timestamp
+    relationships:
+      belongsTo: User
+
+seeders: Player, Coach, Tournament, Card
+
+
+
+
+#controllers:
+#  Blog:
+#    index:
+#      query: all:blogs
+#      render: blog.index with:blogs
+#    create:
+#      render: blog.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:blog.author with:blog
+#      dispatch: SyncMedia with:blog
+#      fire: NewBlog with:blog
+#      flash: blog.title
+#      redirect: blog.index
+#    show:
+#      render: blog.show with:blog
+#    edit:
+#      render: blog.edit with:blog
+#    update:
+#      validate: blog
+#      update: blog
+#      flash: blog.id
+#      redirect: blog.index
+#    destroy:
+#      delete: blog
+#      redirect: blog.index
+#
+#  Player:
+#    index:
+#      query: all:players
+#      render: player.index with:players
+#    create:
+#      render: player.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:player.author with:player
+#      dispatch: SyncMedia with:player
+#      fire: NewPlayer with:player
+#      flash: player.title
+#      redirect: player.index
+#    show:
+#      render: player.show with:player
+#    edit:
+#      render: player.edit with:player
+#    update:
+#      validate: player
+#      update: player
+#      flash: player.id
+#      redirect: player.index
+#    destroy:
+#      delete: player
+#      redirect: player.index
+#
+#  Coach:
+#    index:
+#      query: all:coaches
+#      render: coach.index with:coaches
+#    create:
+#      render: coach.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:coach.author with:coach
+#      dispatch: SyncMedia with:coach
+#      fire: NewCoach with:coach
+#      flash: coach.title
+#      redirect: coach.index
+#    show:
+#      render: coach.show with:coach
+#    edit:
+#      render: coach.edit with:coach
+#    update:
+#      validate: coach
+#      update: coach
+#      flash: coach.id
+#      redirect: coach.index
+#    destroy:
+#      delete: coach
+#      redirect: coach.index
+#
+#  Team:
+#    index:
+#      query: all:teams
+#      render: team.index with:teams
+#    create:
+#      render: team.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:team.author with:team
+#      dispatch: SyncMedia with:team
+#      fire: NewTeam with:team
+#      flash: team.title
+#      redirect: team.index
+#    show:
+#      render: team.show with:team
+#    edit:
+#      render: team.edit with:team
+#    update:
+#      validate: team
+#      update: team
+#      flash: team.id
+#      redirect: team.index
+#    destroy:
+#      delete: team
+#      redirect: team.index
+#
+#  School:
+#    index:
+#      query: all:schools
+#      render: school.index with:schools
+#    create:
+#      render: school.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:school.author with:school
+#      dispatch: SyncMedia with:school
+#      fire: NewSchool with:school
+#      flash: school.title
+#      redirect: school.index
+#    show:
+#      render: school.show with:school
+#    edit:
+#      render: school.edit with:school
+#    update:
+#      validate: school
+#      update: school
+#      flash: school.id
+#      redirect: school.index
+#    destroy:
+#      delete: school
+#      redirect: school.index
+#
+#  Course:
+#    index:
+#      query: all:courses
+#      render: course.index with:courses
+#    create:
+#      render: course.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:course.author with:course
+#      dispatch: SyncMedia with:course
+#      fire: NewCourse with:course
+#      flash: course.title
+#      redirect: course.index
+#    show:
+#      render: course.show with:course
+#    edit:
+#      render: course.edit with:course
+#    update:
+#      validate: course
+#      update: course
+#      flash: course.id
+#      redirect: course.index
+#    destroy:
+#      delete: course
+#      redirect: course.index
+#
+#
+#
+#  Card:
+#    index:
+#      query: all:cards
+#      render: card.index with:cards
+#    create:
+#      render: card.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:card.author with:card
+#      dispatch: SyncMedia with:card
+#      fire: NewCard with:card
+#      flash: card.title
+#      redirect: card.index
+#    show:
+#      render: card.show with:card
+#    edit:
+#      render: card.edit with:card
+#    update:
+#      validate: card
+#      update: card
+#      flash: card.id
+#      redirect: card.index
+#    destroy:
+#      delete: card
+#      redirect: card.index
+#
+#  Classification:
+#    index:
+#      query: all:classifications
+#      render: classification.index with:classifications
+#    create:
+#      render: classification.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:classification.author with:classification
+#      dispatch: SyncMedia with:classification
+#      fire: NewHole with:classification
+#      flash: classification.title
+#      redirect: classification.index
+#    show:
+#      render: classification.show with:classification
+#    edit:
+#      render: classification.edit with:classification
+#    update:
+#      validate: classification
+#      update: classification
+#      flash: classification.id
+#      redirect: classification.index
+#    destroy:
+#      delete: classification
+#      redirect: classification.index
+#
+#
+#  Regional:
+#    index:
+#      query: all:regionals
+#      render: regional.index with:regionals
+#    create:
+#      render: regional.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:regional.author with:regional
+#      dispatch: SyncMedia with:regional
+#      fire: NewHole with:regional
+#      flash: regional.title
+#      redirect: regional.index
+#    show:
+#      render: regional.show with:regional
+#    edit:
+#      render: regional.edit with:regional
+#    update:
+#      validate: regional
+#      update: regional
+#      flash: regional.id
+#      redirect: regional.index
+#    destroy:
+#      delete: regional
+#      redirect: regional.index
+#
+#  Hole:
+#    index:
+#      query: all:holes
+#      render: hole.index with:holes
+#    create:
+#      render: hole.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:hole.author with:hole
+#      dispatch: SyncMedia with:hole
+#      fire: NewHole with:hole
+#      flash: hole.title
+#      redirect: hole.index
+#    show:
+#      render: hole.show with:hole
+#    edit:
+#      render: hole.edit with:hole
+#    update:
+#      validate: hole
+#      update: hole
+#      flash: hole.id
+#      redirect: hole.index
+#    destroy:
+#      delete: hole
+#      redirect: hole.index
+#
+#  League:
+#    index:
+#      query: all:leagues
+#      render: league.index with:leagues
+#    create:
+#      render: league.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:league.author with:league
+#      dispatch: SyncMedia with:league
+#      fire: NewLeague with:league
+#      flash: league.title
+#      redirect: league.index
+#    show:
+#      render: league.show with:league
+#    edit:
+#      render: league.edit with:league
+#    update:
+#      validate: league
+#      update: league
+#      flash: league.id
+#      redirect: league.index
+#    destroy:
+#      delete: league
+#      redirect: league.index
+#
+#  Stat:
+#    index:
+#      query: all:stats
+#      render: stat.index with:stats
+#    create:
+#      render: stat.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:stat.author with:stat
+#      dispatch: SyncMedia with:stat
+#      fire: NewStat with:stat
+#      flash: stat.title
+#      redirect: stat.index
+#    show:
+#      render: stat.show with:stat
+#    edit:
+#      render: stat.edit with:stat
+#    update:
+#      validate: stat
+#      update: stat
+#      flash: stat.id
+#      redirect: stat.index
+#    destroy:
+#      delete: stat
+#      redirect: stat.index
+#
+#  Tournament:
+#    index:
+#      query: all:tournaments
+#      render: tournament.index with:tournaments
+#    create:
+#      render: tournament.create
+#    store:
+#      validate: title, content, remark
+#      save: post
+#      send: ReviewNotification to:tournament.author with:tournament
+#      dispatch: SyncMedia with:tournament
+#      fire: NewBlog with:tournament
+#      flash: tournament.title
+#      redirect: tournament.index
+#    show:
+#      render: tournament.show with:tournament
+#    edit:
+#      render: tournament.edit with:tournament
+#    update:
+#      validate: tournament
+#      update: tournament
+#      flash: tournament.id
+#      redirect: tournament.index
+#    destroy:
+#      delete: tournament
+#      redirect: tournament.index
