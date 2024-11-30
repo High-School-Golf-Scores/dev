@@ -14,13 +14,12 @@ models:
 
   Player:
     school_id: id foreign:schools
-    card_id: id foreign:cards nullable
     first_name: string
     last_name: string
     grad_year: integer
     active: boolean
     relationships:
-      belongsTo: School, Card
+      belongsTo: School
       hasMany: Stat
 
   Coach:
@@ -101,7 +100,7 @@ models:
     comment: string
     relationships:
       belongsTo: Round, Tournament
-      hasMany: Player
+
   #
   Hole:
     course_id: id foreign:courses

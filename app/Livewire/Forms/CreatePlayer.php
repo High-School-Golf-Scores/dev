@@ -30,9 +30,7 @@ class CreatePlayer extends Form
             'last_name' => $this->last_name,
             'grad_year' => $this->grad_year,
             'active' => 1,
-            'level_id' => 1,
-            'team_id' => 1,
-            'card_id' => null,
+            'school_id' => 1,
         ]);
         $this->reset(['first_name', 'last_name', 'grad_year', 'active']);
     }

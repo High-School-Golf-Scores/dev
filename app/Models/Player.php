@@ -18,7 +18,6 @@ class Player extends Model
      */
     protected $fillable = [
         'school_id',
-        'card_id',
         'first_name',
         'last_name',
         'grad_year',
@@ -33,18 +32,12 @@ class Player extends Model
     protected $casts = [
         'id' => 'integer',
         'school_id' => 'integer',
-        'card_id' => 'integer',
         'active' => 'boolean',
     ];
 
     public function school(): BelongsTo
     {
         return $this->belongsTo(School::class);
-    }
-
-    public function card(): BelongsTo
-    {
-        return $this->belongsTo(Card::class);
     }
 
     public function stats(): HasMany

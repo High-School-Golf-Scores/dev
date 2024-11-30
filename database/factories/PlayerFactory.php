@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Card;
 use App\Models\Player;
 use App\Models\School;
 
@@ -24,7 +23,6 @@ class PlayerFactory extends Factory
     {
         return [
             'school_id' => School::factory(),
-            'card_id' => Card::factory(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'grad_year' => $this->faker->numberBetween(-10000, 10000),

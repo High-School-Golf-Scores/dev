@@ -29,7 +29,7 @@
                 <flux:input wire:model="last_name" label="Last Name" placeholder="Last Name" />
                 <flux:input wire:model="grad_year" label="Graduation Year" type="grad_year" />
                 <flux:input wire:model="active" label="active" type="hidden" value="true" />
-                <flux:input wire:model="level_id" label="level_id" type="hidden" value="1" />
+                <flux:input wire:model="school_id" label="school_id" type="hidden" value="1" />
 
 
 
