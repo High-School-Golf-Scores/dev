@@ -1,10 +1,15 @@
 <?php
 
+use App\Livewire\HomePage;
+use App\Livewire\Schedule;
+use App\Livewire\ShowPlayers;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/players.index', \App\Livewire\Players\Index::class)
-    ->middleware(['auth', 'verified'])
-    ->name('index');
+Route::get('/players', ShowPlayers::class)->middleware(['auth', 'verified']);;
+Route::get('/home-page', HomePage::class)->middleware(['auth', 'verified']);
+Route::get('/schedule', Schedule::class)->middleware(['auth', 'verified']);
+
+
 
 Route::view('/', 'welcome');
 

@@ -6,13 +6,12 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-
 #[Layout('layouts.app')]
 #[Title('Home Page')]
-class HomePage extends Component
+class Schedule extends Component
 {
     public function render()
     {
-        return view('livewire.home-page');
+        return view('livewire.schedule');
     }
 }

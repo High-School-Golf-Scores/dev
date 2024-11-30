@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Coach;
-use App\Models\Team;
+use App\Models\School;
 
 class CoachFactory extends Factory
 {
@@ -22,7 +22,7 @@ class CoachFactory extends Factory
     public function definition(): array
     {
         return [
-            'team_id' => Team::factory(),
+            'school_id' => School::factory(),
             'name' => $this->faker->name(),
             'active' => $this->faker->word(),
         ];

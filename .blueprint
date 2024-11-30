@@ -14,23 +14,23 @@ created:
     - database/factories/StatFactory.php
     - database/factories/TagFactory.php
     - database/factories/BlogFactory.php
-    - database/migrations/2024_11_29_031317_create_players_table.php
-    - database/migrations/2024_11_29_031318_create_coaches_table.php
-    - database/migrations/2024_11_29_031319_create_teams_table.php
-    - database/migrations/2024_11_29_031320_create_schools_table.php
-    - database/migrations/2024_11_29_031321_create_regionals_table.php
-    - database/migrations/2024_11_29_031322_create_classifications_table.php
-    - database/migrations/2024_11_29_031323_create_leagues_table.php
-    - database/migrations/2024_11_29_031324_create_tournaments_table.php
-    - database/migrations/2024_11_29_031325_create_courses_table.php
-    - database/migrations/2024_11_29_031326_create_cards_table.php
-    - database/migrations/2024_11_29_031327_create_holes_table.php
-    - database/migrations/2024_11_29_031328_create_rounds_table.php
-    - database/migrations/2024_11_29_031329_create_stats_table.php
-    - database/migrations/2024_11_29_031330_create_tags_table.php
-    - database/migrations/2024_11_29_031331_create_blogs_table.php
-    - database/migrations/2024_11_29_031332_create_school_tag_table.php
-    - database/migrations/2024_11_29_031333_create_tag_tournament_table.php
+    - database/migrations/2024_11_30_131601_create_players_table.php
+    - database/migrations/2024_11_30_131602_create_coaches_table.php
+    - database/migrations/2024_11_30_131603_create_teams_table.php
+    - database/migrations/2024_11_30_131604_create_schools_table.php
+    - database/migrations/2024_11_30_131605_create_regionals_table.php
+    - database/migrations/2024_11_30_131606_create_classifications_table.php
+    - database/migrations/2024_11_30_131607_create_leagues_table.php
+    - database/migrations/2024_11_30_131608_create_tournaments_table.php
+    - database/migrations/2024_11_30_131609_create_courses_table.php
+    - database/migrations/2024_11_30_131610_create_cards_table.php
+    - database/migrations/2024_11_30_131611_create_holes_table.php
+    - database/migrations/2024_11_30_131612_create_rounds_table.php
+    - database/migrations/2024_11_30_131613_create_stats_table.php
+    - database/migrations/2024_11_30_131614_create_tags_table.php
+    - database/migrations/2024_11_30_131615_create_blogs_table.php
+    - database/migrations/2024_11_30_131616_create_school_tag_table.php
+    - database/migrations/2024_11_30_131617_create_tag_tournament_table.php
     - app/Models/Player.php
     - app/Models/Coach.php
     - app/Models/Team.php
@@ -51,9 +51,9 @@ created:
     - database/seeders/TournamentSeeder.php
     - database/seeders/CardSeeder.php
 models:
-    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
-    Player: { team_id: 'id foreign:teams', card_id: 'id foreign:cards', name: string, grad_year: integer, active: boolean, relationships: { belongsTo: 'Team, Card', hasMany: Stat } }
-    Coach: { team_id: 'id foreign:teams', name: string, active: bool, relationships: { belongsTo: Team, hasMany: Tournament } }
+    User: { school_id: 'id foreign:schools', first_name: string, last_last: string, email: 'string unique', email_verified_at: 'timestamp nullable', password: string, rememberToken: text, relationships: { belongsTo: School, hasMany: Coach } }
+    Player: { school_id: 'id foreign:schools', card_id: 'id foreign:cards nullable', first_name: string, last_name: string, grad_year: integer, active: boolean, relationships: { belongsTo: 'School, Card', hasMany: Stat } }
+    Coach: { school_id: 'id foreign:schools', name: string, active: bool, relationships: { belongsTo: School, hasMany: Tournament } }
     Team: { school_id: 'id foreign:schools', coach: string, logo: url, relationships: { belongsTo: School, hasMany: 'Player, Coach' } }
     School: { regional_id: 'id foreign:regionals', classification_id: 'id foreign:classifications', league_id: 'id foreign:leagues', name: string, address: string, city: string, state: string, zip: string, paid: boolean, relationships: { hasMany: 'Team, Tag', belongsTo: 'Regional, Classification, League' } }
     Regional: { name: string, timestamp: false, relationships: { hasMany: School } }

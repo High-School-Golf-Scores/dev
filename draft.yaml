@@ -1,20 +1,34 @@
 models:
+
+#  User:
+#    school_id: id foreign:schools
+#    first_name: string
+#    last_last: string
+#    email: string unique
+#    email_verified_at: timestamp nullable
+#    password: string
+#    rememberToken: text
+#    relationships:
+#      belongsTo: School
+#      hasMany: Coach
+
   Player:
-    team_id: id foreign:teams
-    card_id: id foreign:cards
-    name: string
+    school_id: id foreign:schools
+    card_id: id foreign:cards nullable
+    first_name: string
+    last_name: string
     grad_year: integer
     active: boolean
     relationships:
-      belongsTo: Team, Card
+      belongsTo: School, Card
       hasMany: Stat
 
   Coach:
-    team_id: id foreign:teams
+    school_id: id foreign:schools
     name: string
     active: bool
     relationships:
-      belongsTo: Team
+      belongsTo: School
       hasMany: Tournament
 
 

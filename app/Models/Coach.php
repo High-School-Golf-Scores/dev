@@ -17,7 +17,7 @@ class Coach extends Model
      * @var array
      */
     protected $fillable = [
-        'team_id',
+        'school_id',
         'name',
         'active',
     ];
@@ -29,12 +29,12 @@ class Coach extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'team_id' => 'integer',
+        'school_id' => 'integer',
     ];
 
-    public function team(): BelongsTo
+    public function school(): BelongsTo
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(School::class);
     }
 
     public function tournaments(): HasMany

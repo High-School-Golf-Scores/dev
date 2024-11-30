@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Layout('layouts.app')]
 class Player extends Model
 {
     use HasFactory;
@@ -18,9 +17,10 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'team_id',
+        'school_id',
         'card_id',
-        'name',
+        'first_name',
+        'last_name',
         'grad_year',
         'active',
     ];
@@ -32,14 +32,14 @@ class Player extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'team_id' => 'integer',
+        'school_id' => 'integer',
         'card_id' => 'integer',
         'active' => 'boolean',
     ];
 
-    public function team(): BelongsTo
+    public function school(): BelongsTo
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(School::class);
     }
 
     public function card(): BelongsTo

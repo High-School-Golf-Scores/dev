@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('players', function (Blueprint $table) {
+        Schema::create('coaches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained();
-            $table->foreignId('card_id')->constrained();
+            $table->foreignId('school_id')->constrained();
             $table->string('name');
-            $table->integer('grad_year');
-            $table->boolean('active');
+            $table->string('active');
             $table->timestamps();
         });
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('players');
+        Schema::dropIfExists('coaches');
     }
 };

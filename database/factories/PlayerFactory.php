@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Card;
 use App\Models\Player;
-use App\Models\Team;
+use App\Models\School;
 
 class PlayerFactory extends Factory
 {
@@ -23,9 +23,10 @@ class PlayerFactory extends Factory
     public function definition(): array
     {
         return [
-            'team_id' => Team::factory(),
+            'school_id' => School::factory(),
             'card_id' => Card::factory(),
-            'name' => $this->faker->name(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'grad_year' => $this->faker->numberBetween(-10000, 10000),
             'active' => $this->faker->boolean(),
         ];
