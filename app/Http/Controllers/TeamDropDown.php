@@ -10,9 +10,9 @@ class TeamDropDown extends Controller
     /**
      * Get the view / contents that represent the component.
      */
-    public function index()
+    public function mount()
     {
         $data = School::all();
-        return view('components.team-drop-down', compact('data'));
+        return view('components.livewire.pages.auth.register', compact('data'));
     }
 }

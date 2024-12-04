@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\School;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,19 +17,29 @@ new #[Layout('layouts.guest')] class extends Component
     public string $password = '';
     public string $password_confirmation = '';
     public string $school_id = '';
+    public array $data = [];
+    public array $schools = [];
 
     /**
      * Handle an incoming registration request.
      */
-    public function register(): void
+    public function mount()
     {
+//        $this->schools = School::all()['id'];
+    }
+
+    public function register()
+    {
+
+
         $validated = $this->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-            'school_id'=> ['required']
+
         ]);
+
 
         $validated['password'] = Hash::make($validated['password']);
 
@@ -38,6 +49,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
+
 }; ?>
 
 <div>
@@ -50,7 +62,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
         <div>
             <x-input-label for="last_name" :value="__('Last Name')" />
-            <x-text-input wire:model="last_name" id="last_name" class="block mt-1 w-full" type="text" name="last_name" required autofocus autocomplete="last_name" />
+            <x-text-input wire:model="last_name" id="last_name" class="block mt-1 w-full" type="text" name="last_name" required autocomplete="last_name" />
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
@@ -84,10 +96,19 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div>
-            <x-input-label for="school_id" :value="__('School ID')" />
-            <x-text-input wire:model="school_id" id="school_id" class="block mt-1 w-full" type="text" name="school_id" required autofocus autocomplete="school_id" />
+        <!-- School Select -->
+
+        <div class="mt-4">
+            <x-input-label for="school_id" :value="__('Select Your School')" />
+                <x-input-select wire:model="school"  value="1" class="form-control">
+{{--                    @foreach ($schools as $school)--}}
+
+                        <option value="1">Smith Center</option>
+
+{{--                    @endforeach--}}
+                </x-input-select>
             <x-input-error :messages="$errors->get('school_id')" class="mt-2" />
+
         </div>
 
         <div class="flex items-center justify-end mt-4">
