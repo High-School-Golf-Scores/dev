@@ -13,6 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script defer src="https://unpkg.com/@alpinejs/ui@3.13.2-beta.0/dist/cdn.min.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
@@ -50,6 +52,7 @@
                         <flux:navlist.item icon="inbox" badge="12" href="/tournaments">Tournaments</flux:navlist.item>
                         <flux:navlist.item icon="document-text" href="/players">Players</flux:navlist.item>
                         <flux:navlist.item icon="calendar" href="/schedule">Calendar</flux:navlist.item>
+                        <flux:navlist.item icon="document-text" href="/schedule">Posts</flux:navlist.item>
 
                         <flux:navlist.group expandable heading="Favorites" class="hidden lg:grid">
                             <flux:navlist.item href="https://www.kshsaa.org">KSHSAA</flux:navlist.item>

@@ -8,13 +8,13 @@ use App\Models\Player;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
-
-use Livewire\Attributes\Rule;
-
 #[Layout('layouts.app')]
 #[Title('Home Page')]
+
+
 class ShowPlayers extends Component
 {
+
     public $player;
     public $first_name = '';
     public $last_name = '';

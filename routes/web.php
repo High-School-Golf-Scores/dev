@@ -1,14 +1,24 @@
 <?php
 
 use App\Livewire\HomePage;
+use App\Livewire\Order\Index\Page;
 use App\Livewire\Schedule;
 use App\Livewire\ShowPlayers;
+use App\Livewire\ShowPosts;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/players', ShowPlayers::class)->middleware(['auth', 'verified']);;
+Route::get('/players', ShowPlayers::class)->middleware(['auth', 'verified']);
 Route::get('/home-page', HomePage::class)->middleware(['auth', 'verified']);
 Route::get('/schedule', Schedule::class)->middleware(['auth', 'verified']);
+Route::get('/posts', ShowPosts::class)->middleware(['auth', 'verified']);
+Route::get('/posts', ShowPosts::class)->middleware(['auth', 'verified']);
 
+
+Route::get('/store/{store}/orders', Page::class)
+    ->middleware('can:view,store');
+//
+//Route::get('/store/{store}/orders', Page::class)
+//    ->middleware('can:view,store');
 
 
 Route::view('/', 'welcome');

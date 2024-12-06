@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Card;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            CardSeeder::class,
+            CoachSeeder::class,
+            OrderSeeder::class,
+            PlayerSeeder::class,
+            PostSeeder::class,
+            TournamentSeeder::class,
         ]);
+//        \App\Models\User::create([
+//            'first_name' => 'Jelly',
+//            'last_name' => 'McSquid',
+//            'email' => 'jelly@laravel.livewire.com',
+//            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+//        ]);
+
+        \App\Models\Store::create([
+            'name' => 'MLM Industries',
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Product::create(['name' => 'Energy Drink', 'store_id' => 1]);
+        \App\Models\Product::create(['name' => 'Water Purifier', 'store_id' => 1]);
+        \App\Models\Product::create(['name' => 'Toothpaste', 'store_id' => 1]);
+        \App\Models\Product::create(['name' => 'Magic Bracelet', 'store_id' => 1]);
+
+        \App\Models\Order::factory()->count(902)->create(['product_id' => '1']);
+        \App\Models\Order::factory()->count(760)->create(['product_id' => '2']);
+        \App\Models\Order::factory()->count(543)->create(['product_id' => '3']);
+        \App\Models\Order::factory()->count(632)->create(['product_id' => '4']);
     }
 }

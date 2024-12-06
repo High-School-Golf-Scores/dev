@@ -27,15 +27,15 @@ class PlayerForm extends Form
 
     public function setPlayer($player)
     {
-        $this->first_name = $player['first_name'];
-        $this->last_name = $player['last_name'];
-        $this->grad_year = $player['grad_year'];
+//        $this->first_name = $player->first_name;
+//        $this->last_name = $player->last_name;
+//        $this->grad_year = $player->grad_year;
     }
 
 
     public function save() {
 
-//        $this->validate();
+        $this->validate();
 
         Player::create([
             'first_name' => $this->first_name,
@@ -50,13 +50,13 @@ class PlayerForm extends Form
     public function update() {
 //                $this->validate();
 
-//        $this->player->update([
-//            'first_name' => $this->first_name,
-//            'last_name' => $this->last_name,
-//            'grad_year' => $this->grad_year,
-//            'active' => 1,
-//            'school_id' => 1,
-//        ]);
+        $this->player->update([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'grad_year' => $this->grad_year,
+            'active' => 1,
+            'school_id' => 1,
+        ]);
 
 
     }

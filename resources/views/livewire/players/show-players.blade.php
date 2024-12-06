@@ -1,7 +1,7 @@
 <div>
 
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+        <div class="max-w-8xl mx-auto sm:px-2 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg lg:w-1/2 sm:w-1">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="ml-2">
@@ -53,16 +53,20 @@
                             {{--Table of Players--}}
                         <flux:table>
                             <flux:columns>
+                                <flux:column>ID</flux:column>
                                 <flux:column>First Name</flux:column>
                                 <flux:column>Last Name</flux:column>
                                 <flux:column>Graduation Year</flux:column>
                                 <flux:column>Status</flux:column>
+                                <flux:column>Edit</flux:column>
                             </flux:columns>
                             @foreach($players as $player)
-                                <div wire:key="{{ $player->id}}">
+                                <div>
                                     <flux:rows>
-                                        <flux:row>
-                                            <flux:cell>{{ $player->first_name}}</flux:cell>
+
+                                        <flux:row wire:key="{{ $player->id }}">
+                                            <flux:cell> {{ $player->id }} </flux:cell>
+                                            <flux:cell> {{ $player->first_name}}</flux:cell>
                                             <flux:cell>{{ $player->last_name}}</flux:cell>
                                             <flux:cell>{{ $player->grad_year }}</flux:cell>
                                             <flux:cell><flux:badge color="green" size="sm" inset="top bottom">{{ $player->active}}</flux:badge></flux:cell>
@@ -75,24 +79,7 @@
                                             </flux:cell>
 
                                             {{--Edit la--}}
-                                                <flux:modal wire:model="showEditPlayerDialog" name="editPlayer" class="md:w-96 space-y-6">
-                                                    <form wire:submit="save">
-                                                        <div>
-                                                            <flux:heading size="lg">Edit Player</flux:heading>
-                                                            <flux:subheading>Edit where needed. </flux:subheading>
-                                                        </div>
-                                                        <flux:input wire:model="form.first_name" label="First Name" placeholder="First Name" value="1" type="string" />
-                                                        <flux:input wire:model="form.last_name" label="Last Name" placeholder="Last Name" value="1"  type="string" />
-                                                        <flux:input wire:model="form.grad_year" label="Graduation Year" value="1" type="string" />
-                                                        <flux:input wire:model="form.active" type="hidden" value="1" />
-                                                        <flux:input wire:model="form.school_id" type="hidden" value="1" />
-                                                        <div class="flex">
-                                                            <flux:spacer />
 
-                                                            <flux:button type="submit" variant="primary">Save changes</flux:button>
-                                                        </div>
-                                                    </form>
-                                                </flux:modal>
                                             <flux:cell>
                                                 <button wire:confirm="Are you sure?" wire:click="delete({{$player->id}})" type="button" class="font font-medium text-red-700">Delete</button>
                                             </flux:cell>
@@ -101,6 +88,26 @@
                                 </div>
                             @endforeach
                         </flux:table>
+
+                        <flux:modal wire:model="showEditPlayerDialog" name="editPlayer" class="md:w-96 space-y-6">
+                            <form wire:submit="save">
+                                <div>
+                                    <flux:heading size="lg">Edit Player</flux:heading>
+                                    <flux:subheading>Edit where needed. </flux:subheading>
+                                </div>
+                                <flux:cell> {{ $player->id }} </flux:cell>
+                                <flux:input wire:model="form.first_name" label="First Name" name="first_name"  type="string" />
+                                <flux:input wire:model="form.last_name" label="Last Name" name="last_name"   type="string" />
+                                <flux:input wire:model="form.grad_year" label="Graduation Year" name="grad_year" value="1" />
+                                <flux:input wire:model="form.active" type="hidden" value="1" />
+                                <flux:input wire:model="form.school_id" type="hidden" value="1" />
+                                <div class="flex">
+                                    <flux:spacer />
+
+                                    <flux:button type="submit" variant="primary">Save changes</flux:button>
+                                </div>
+                            </form>
+                        </flux:modal>
                         {{--    {{ $players->links() }}--}}
                     </div>
                 </div>
