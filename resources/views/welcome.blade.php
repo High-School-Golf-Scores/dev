@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-app-layout>
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="http://alpine.test/packages/ui/dist/cdn.js"></script>
-        <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
-        @livewireStyles
-
     </head>
-
-    <body class="antialiased font-sans">
-    Welcome to Kansas Golf Scores.com
-
+    <body>
+    <main class="flex justify-center items-start pt-24 bg-slate-200 min-h-screen text-slate-800">
+        <livewire:show-posts />
+    </main>
     </body>
-</html>
+    </html>
+</x-app-layout>

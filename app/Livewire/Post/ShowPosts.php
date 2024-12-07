@@ -1,13 +1,14 @@
 <?php
 
+namespace App\Livewire\Post;
 
-namespace App\Livewire;
-
-use Livewire\Component;
 use App\Models\Post;
+use Livewire\Component;
 
 class ShowPosts extends Component
 {
+
+
     public function delete($postId)
     {
         $post = Post::find($postId);
@@ -19,10 +20,13 @@ class ShowPosts extends Component
         sleep(1);
     }
 
+
     public function render()
     {
-        return view('livewire.show-posts', [
-            'posts' => Post::all(),
+
+
+        return view('livewire.posts.show-posts', [
+            'posts' => Post::All(),
         ]);
     }
 }

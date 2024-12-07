@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Post;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Livewire\Forms\PostForm;
@@ -24,11 +24,11 @@ class PostRow extends Component
 
         $this->post->refresh();
 
-        $this->showEditDialog = false;
+        $this->reset('showEditDialog');
     }
 
     public function render()
     {
-        return view('livewire.posts.post-row');
+        return view('livewire.post-row');
     }
 }

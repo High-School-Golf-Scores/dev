@@ -14,11 +14,13 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script defer src="https://unpkg.com/@alpinejs/ui@3.13.2-beta.0/dist/cdn.min.js"></script>
+        <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
+        @livewireStyles
 
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
-            <livewire:layout.navigation />
+{{--            <livewire:layout.navigation />--}}
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -35,7 +37,7 @@
 
                 <head>
                     <!-- ... -->
-
+                    @livewireStyles
                     @fluxStyles
                 </head>
                 <body class="min-h-screen bg-white dark:bg-gray-900">
@@ -106,7 +108,7 @@
                 </flux:header>
 
                 <flux:main></flux:main>
-
+                @livewireScripts
                 @fluxScripts
                 </body>
             </main>
