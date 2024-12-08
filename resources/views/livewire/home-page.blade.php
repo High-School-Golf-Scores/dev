@@ -1,4 +1,3 @@
-
 <div class="w-2/3">
 
         <flux:heading size="xl" level="1">Good afternoon, Home Page</flux:heading>
@@ -7,6 +6,11 @@
 
         <flux:separator variant="subtle" />
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, facilis, repudiandae. Blanditiis cumque cupiditate delectus dicta distinctio dolore dolores ea, eligendi fugiat harum impedit ipsum modi optio, tempore tenetur, velit.</p>
 
+
+    <body class="home-one">
+    <!-- Start Top Header Area -->
+    </body>
 </div>
+
+

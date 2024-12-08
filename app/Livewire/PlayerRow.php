@@ -1,34 +1,34 @@
 <?php
 
-namespace App\Livewire\Post;
+namespace App\Livewire;
 
 use Livewire\Component;
-use App\Livewire\Forms\PostForm;
+use App\Livewire\Forms\PlayerForm;
 
-class PostRow extends Component
+class PlayerRow extends Component
 {
-    public $post;
+    public $player;
 
-    public PostForm $form;
+    public PlayerForm $form;
 
     public $showEditDialog = false;
 
     public function mount()
     {
-        $this->form->setPost($this->post);
+        $this->form->setPlayer($this->player);
     }
 
     public function save()
     {
         $this->form->update();
 
-        $this->post->refresh();
+        $this->player->refresh();
 
         $this->reset('showEditDialog');
     }
 
     public function render()
     {
-        return view('livewire.posts.post-row');
+        return view('livewire.player-row');
     }
 }

@@ -1,10 +1,9 @@
 <div class="flex flex-col gap-8 w-[50rem] px-8">
     <div class="flex justify-between">
-        <h1 class="text-3xl font-semibold leading-6 text-slate-900">Blog Posts</h1>
+        <h1 class="text-3xl font-semibold leading-6 text-slate-900">Coaches Summaries</h1>
 
         <livewire:add-post-dialog @added="$refresh" />
     </div>
-
     <table class="min-w-full divide-y divide-slate-300 bg-white shadow rounded-xl">
         <thead>
             <tr class="text-left text-slate-800">

@@ -25,7 +25,7 @@ class PostForm extends Form
 
     public function save()
     {
-//        $this->validate();
+        $this->validate();
 
         Post::create([
             'title' => $this->title,

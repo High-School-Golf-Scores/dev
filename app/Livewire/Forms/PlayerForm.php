@@ -4,9 +4,8 @@ namespace App\Livewire\Forms;
 
 use Livewire\Form;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use App\Models\Player;
-
-
 
 class PlayerForm extends Form
 {
@@ -27,15 +26,16 @@ class PlayerForm extends Form
 
     public function setPlayer($player)
     {
-//        $this->first_name = $player->first_name;
-//        $this->last_name = $player->last_name;
-//        $this->grad_year = $player->grad_year;
+        $this->player = $player;
+        $this->first_name = $player->first_name;
+        $this->last_name = $player->last_name;
+        $this->grad_year = $player->grad_year;
     }
 
 
     public function save() {
 
-        $this->validate();
+//        $this->validate();
 
         Player::create([
             'first_name' => $this->first_name,

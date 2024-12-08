@@ -2,8 +2,9 @@
 
 namespace App\Livewire\Post;
 
-use App\Models\Post;
 use Livewire\Component;
+use App\Models\Post;
+
 
 class ShowPosts extends Component
 {

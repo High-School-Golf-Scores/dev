@@ -44,8 +44,8 @@
                 <flux:sidebar sticky stashable class="bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700">
                     <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-                    <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc." class="px-2 dark:hidden" />
-                    <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="px-2 hidden dark:flex" />
+                    <flux:brand href="/" logo="https://kansasgolfscores.com/ks_g_24/assets/images/header/KGCA_logo_1.png"  name="KGCA." class="px-2 dark:hidden" />
+                    <flux:brand href="/" logo="https://kansasgolfscores.com/ks_g_24/assets/images/header/KGCA_logo_1.png"  name="KGCA" class="px-2 hidden dark:flex" />
 
                     <flux:input as="button" variant="filled" placeholder="Search..." icon="magnifying-glass" />
 
@@ -54,7 +54,8 @@
                         <flux:navlist.item icon="inbox" badge="12" href="/tournaments">Tournaments</flux:navlist.item>
                         <flux:navlist.item icon="document-text" href="/players">Players</flux:navlist.item>
                         <flux:navlist.item icon="calendar" href="/schedule">Calendar</flux:navlist.item>
-                        <flux:navlist.item icon="document-text" href="/schedule">Posts</flux:navlist.item>
+                        <flux:navlist.item icon="document-text" href="/posts">Posts</flux:navlist.item>
+                        <flux:navlist.item icon="document-text" href="/store/1/orders">Orders</flux:navlist.item>
 
                         <flux:navlist.group expandable heading="Favorites" class="hidden lg:grid">
                             <flux:navlist.item href="https://www.kshsaa.org">KSHSAA</flux:navlist.item>

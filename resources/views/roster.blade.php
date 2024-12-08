@@ -11,7 +11,7 @@
     </head>
     <body>
     <main class="flex justify-center items-start pt-24 bg-slate-200 min-h-screen text-slate-800">
-        <livewire:show-posts />
+        <livewire:show-players />
     </main>
     </body>
     </html>
