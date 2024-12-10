@@ -16,16 +16,15 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
-    public string $school_id = '';
+    public string $school_id = '1';
     public array $data = [];
     public array $schools = [];
 
     /**
      * Handle an incoming registration request.
      */
-    public function mount()
-    {
-//        $this->schools = School::all()['id'];
+    public function mount() {
+
     }
 
     public function register()
@@ -37,6 +36,7 @@ new #[Layout('layouts.guest')] class extends Component
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'school_id' => ['required'],
 
         ]);
 
@@ -97,19 +97,16 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- School Select -->
+        <input wire:model="school_id" name="school_id" >
 
-        <div class="mt-4">
-            <x-input-label for="school_id" :value="__('Select Your School')" />
-                <x-input-select wire:model="school"  value="1" class="form-control">
-{{--                    @foreach ($schools as $school)--}}
+{{--        <div class="mt-4">--}}
+{{--            <x-input-label for="school_id" />--}}
+{{--                <x-input-select wire:model="school_id" value="1" class="form-control">--}}
+{{--                        <option value="1">Smith Center</option>--}}
+{{--                </x-input-select>--}}
+{{--            <x-input-error :messages="$errors->get('school_id')" class="mt-2" />--}}
 
-                        <option value="1">Smith Center</option>
-
-{{--                    @endforeach--}}
-                </x-input-select>
-            <x-input-error :messages="$errors->get('school_id')" class="mt-2" />
-
-        </div>
+{{--        </div>--}}
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>

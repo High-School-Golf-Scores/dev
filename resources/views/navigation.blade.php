@@ -6,6 +6,9 @@
         >
             Dashboard
         </a>
+
+        <livewire:logout />
+
     @else
         <a
             href="{{ route('login') }}"

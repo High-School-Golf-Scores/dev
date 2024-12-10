@@ -5,9 +5,12 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Player;
+use App\Models\User;
 
 class ShowPlayers extends Component
 {
+    public User $user;
+
     public function delete($playerId)
     {
         $player = Player::find($playerId);
@@ -16,7 +19,7 @@ class ShowPlayers extends Component
 
         $player->delete();
 
-        sleep(1);
+//        sleep(1);
     }
 
     public function render()

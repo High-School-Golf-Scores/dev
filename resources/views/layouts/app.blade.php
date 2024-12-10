@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+        <title>{{ $title ?? config('app.name', 'KGCA | Kansas Golf Coaches Association') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,6 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script defer src="https://unpkg.com/@alpinejs/ui@3.13.2-beta.0/dist/cdn.min.js"></script>
         <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
         @livewireStyles
 
     </head>
@@ -72,17 +73,17 @@
                     </flux:navlist>
 
                     <flux:dropdown position="top" align="start" class="max-lg:hidden">
-                        <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="Olivia Martin" />
+                        <flux:profile avatar="https://fluxui.dev/img/demo/user.png" name="Switch Coaches" />
 
                         <flux:menu>
                             <flux:menu.radio.group>
-                                <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-                                <flux:menu.radio>Truly Delta</flux:menu.radio>
+                                <flux:menu.radio checked>Greg Hobelmann</flux:menu.radio>
+
                             </flux:menu.radio.group>
 
                             <flux:menu.separator />
 
-                            <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
+                            <livewire:logout />
                         </flux:menu>
                     </flux:dropdown>
                 </flux:sidebar>
@@ -97,13 +98,13 @@
 
                         <flux:menu>
                             <flux:menu.radio.group>
-                                <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-                                <flux:menu.radio>Truly Delta</flux:menu.radio>
+                                <flux:menu.radio checked>Greg Hobelmann</flux:menu.radio>
+
                             </flux:menu.radio.group>
 
                             <flux:menu.separator />
 
-                            <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
+                            <livewire:logout />
                         </flux:menu>
                     </flux:dropdown>
                 </flux:header>

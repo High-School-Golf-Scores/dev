@@ -18,8 +18,7 @@ class Team extends Model
      */
     protected $fillable = [
         'school_id',
-        'coach',
-        'logo',
+        'level',
     ];
 
     /**

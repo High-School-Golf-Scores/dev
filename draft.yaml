@@ -33,8 +33,7 @@ models:
 
   Team:
     school_id: id foreign:schools
-    coach: string
-    logo: url
+    level: integer
     relationships:
       belongsTo: School
       hasMany: Player, Coach
@@ -51,7 +50,7 @@ models:
     zip: string
     paid: boolean
     relationships:
-      hasMany: Team, Tag
+      hasMany: Team, Tag, Tournament
       belongsTo: Regional, Classification, League
 
   Regional:
@@ -75,11 +74,27 @@ models:
   Tournament:
     coach_id: id foreign:coaches
     name: string
+    date: date
+    course_id: integer
+    start_time: time
+    start_type: integer
+    start_interval: time
     type: integer
+    starting_hole: integer
+    event: string
+    sub_tournament: string
+    tie_breaker: integer
+    format: integer
     cards: integer
+    rounds: integer
+    levels: integer
+    rules: text
+    alert: string
+    sponsor: string
+    flights: integer
     relationships:
       belongsTo: Coach
-      hasMany: Round, Course, Card, Tag
+      hasMany: Round, Course, Card, Tag, School
   #
   Course:
     tournament_id: id foreign:tournaments

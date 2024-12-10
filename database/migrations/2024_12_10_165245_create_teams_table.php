@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('school_id')->constrained();
-            $table->string('coach');
-            $table->string('logo');
+            $table->integer('level');
             $table->timestamps();
         });
 

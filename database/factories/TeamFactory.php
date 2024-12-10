@@ -23,8 +23,7 @@ class TeamFactory extends Factory
     {
         return [
             'school_id' => School::factory(),
-            'coach' => $this->faker->word(),
-            'logo' => $this->faker->word(),
+            'level' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

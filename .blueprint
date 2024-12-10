@@ -14,23 +14,23 @@ created:
     - database/factories/StatFactory.php
     - database/factories/TagFactory.php
     - database/factories/BlogFactory.php
-    - database/migrations/2024_11_30_135300_create_players_table.php
-    - database/migrations/2024_11_30_135301_create_coaches_table.php
-    - database/migrations/2024_11_30_135302_create_teams_table.php
-    - database/migrations/2024_11_30_135303_create_schools_table.php
-    - database/migrations/2024_11_30_135304_create_regionals_table.php
-    - database/migrations/2024_11_30_135305_create_classifications_table.php
-    - database/migrations/2024_11_30_135306_create_leagues_table.php
-    - database/migrations/2024_11_30_135307_create_tournaments_table.php
-    - database/migrations/2024_11_30_135308_create_courses_table.php
-    - database/migrations/2024_11_30_135309_create_cards_table.php
-    - database/migrations/2024_11_30_135310_create_holes_table.php
-    - database/migrations/2024_11_30_135311_create_rounds_table.php
-    - database/migrations/2024_11_30_135312_create_stats_table.php
-    - database/migrations/2024_11_30_135313_create_tags_table.php
-    - database/migrations/2024_11_30_135314_create_blogs_table.php
-    - database/migrations/2024_11_30_135315_create_school_tag_table.php
-    - database/migrations/2024_11_30_135316_create_tag_tournament_table.php
+    - database/migrations/2024_12_10_165243_create_players_table.php
+    - database/migrations/2024_12_10_165244_create_coaches_table.php
+    - database/migrations/2024_12_10_165245_create_teams_table.php
+    - database/migrations/2024_12_10_165246_create_schools_table.php
+    - database/migrations/2024_12_10_165247_create_regionals_table.php
+    - database/migrations/2024_12_10_165248_create_classifications_table.php
+    - database/migrations/2024_12_10_165249_create_leagues_table.php
+    - database/migrations/2024_12_10_165250_create_tournaments_table.php
+    - database/migrations/2024_12_10_165251_create_courses_table.php
+    - database/migrations/2024_12_10_165252_create_cards_table.php
+    - database/migrations/2024_12_10_165253_create_holes_table.php
+    - database/migrations/2024_12_10_165254_create_rounds_table.php
+    - database/migrations/2024_12_10_165255_create_stats_table.php
+    - database/migrations/2024_12_10_165256_create_tags_table.php
+    - database/migrations/2024_12_10_165257_create_blogs_table.php
+    - database/migrations/2024_12_10_165258_create_school_tag_table.php
+    - database/migrations/2024_12_10_165259_create_tag_tournament_table.php
     - app/Models/Player.php
     - app/Models/Coach.php
     - app/Models/Team.php
@@ -51,15 +51,19 @@ created:
     - database/seeders/TournamentSeeder.php
     - database/seeders/CardSeeder.php
 models:
-    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, school_id: integer, remember_token: 'string:100 nullable' }
+    Order: { number: biginteger, email: string, amount: integer, status: string, ordered_at: timestamp, product_id: biginteger, store_id: biginteger }
+    Post: { title: string, content: string }
+    Product: { name: string, store_id: biginteger }
+    Store: { name: string, user_id: biginteger }
+    User: { first_name: string, last_name: string, email: string, email_verified_at: 'timestamp nullable', password: string, school_id: 'integer default:1', remember_token: 'string:100 nullable' }
     Player: { school_id: 'id foreign:schools', first_name: string, last_name: string, grad_year: integer, active: boolean, relationships: { belongsTo: School, hasMany: Stat } }
     Coach: { school_id: 'id foreign:schools', name: string, active: bool, relationships: { belongsTo: School, hasMany: Tournament } }
-    Team: { school_id: 'id foreign:schools', coach: string, logo: url, relationships: { belongsTo: School, hasMany: 'Player, Coach' } }
-    School: { regional_id: 'id foreign:regionals', classification_id: 'id foreign:classifications', league_id: 'id foreign:leagues', name: string, address: string, city: string, state: string, zip: string, paid: boolean, relationships: { hasMany: 'Team, Tag', belongsTo: 'Regional, Classification, League' } }
+    Team: { school_id: 'id foreign:schools', level: integer, relationships: { belongsTo: School, hasMany: 'Player, Coach' } }
+    School: { regional_id: 'id foreign:regionals', classification_id: 'id foreign:classifications', league_id: 'id foreign:leagues', name: string, address: string, city: string, state: string, zip: string, paid: boolean, relationships: { hasMany: 'Team, Tag, Tournament', belongsTo: 'Regional, Classification, League' } }
     Regional: { name: string, timestamp: false, relationships: { hasMany: School } }
     Classification: { name: string, timestamp: false, relationships: { hasMany: School } }
     League: { name: string, timestamp: false, relationships: { hasMany: School } }
-    Tournament: { coach_id: 'id foreign:coaches', name: string, type: integer, cards: integer, relationships: { belongsTo: Coach, hasMany: 'Round, Course, Card, Tag' } }
+    Tournament: { coach_id: 'id foreign:coaches', name: string, date: date, course_id: integer, start_time: time, start_type: integer, start_interval: time, type: integer, starting_hole: integer, event: string, sub_tournament: string, tie_breaker: integer, format: integer, cards: integer, rounds: integer, levels: integer, rules: text, alert: string, sponsor: string, flights: integer, relationships: { belongsTo: Coach, hasMany: 'Round, Course, Card, Tag, School' } }
     Course: { tournament_id: 'id foreign:tournaments', hole_id: 'id foreign:holes', name: string, rating: decimal, slope: decimal, tees: string, relationships: { belongsTo: Tournament, hasMany: Hole } }
     Card: { tournament_id: 'id foreign:tournaments', round_id: 'id foreign:rounds', starting_hole: integer, tee_time: string, comment: string, relationships: { belongsTo: 'Round, Tournament' } }
     Hole: { course_id: 'id foreign:courses', number: integer, par: integer, distance: integer, relationships: { belongsTo: Course } }

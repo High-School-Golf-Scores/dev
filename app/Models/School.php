@@ -51,6 +51,11 @@ class School extends Model
         return $this->hasMany(Tag::class);
     }
 
+    public function tournaments(): HasMany
+    {
+        return $this->hasMany(Tournament::class);
+    }
+
     public function regional(): BelongsTo
     {
         return $this->belongsTo(Regional::class);

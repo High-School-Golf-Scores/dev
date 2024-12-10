@@ -2,16 +2,16 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Forms\PlayerForm;
+use App\Livewire\Forms\TournamentForm;
 use Livewire\Component;
 use App\Models\User;
 
-class AddPlayerDialog extends Component
+class AddTournamentDialog extends Component
 {
-
     public User $user;
+    public $start_type_btn = '1';
 
-    public PlayerForm $form;
+    public TournamentForm $form;
 
     public $show = false;
 
@@ -23,6 +23,7 @@ class AddPlayerDialog extends Component
 
     public function add()
     {
+//        dd($this->form);
         $this->form->save();
 
         $this->reset('show');
@@ -32,6 +33,6 @@ class AddPlayerDialog extends Component
 
     public function render()
     {
-        return view('livewire.add-player-dialog');
+        return view('livewire.add-tournament-dialog');
     }
 }

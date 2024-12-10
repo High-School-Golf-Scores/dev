@@ -18,3 +18,17 @@ class Player extends Component
         ]);
     }
 }
+
+
+//public function index()
+//{
+//    $posts = Post::where('user_id', Auth::user()->id)->paginate(10);
+//    $categories = Category::all();
+//    $tags = Tag::all();
+//
+//    return View('posts.index')->with([
+//        'posts' => $posts,
+//        'categories' => $categories,
+//        'tags' => $tags
+//    ]);
+//}

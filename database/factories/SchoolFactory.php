@@ -27,11 +27,11 @@ class SchoolFactory extends Factory
             'regional_id' => Regional::factory(),
             'classification_id' => Classification::factory(),
             'league_id' => League::factory(),
-            'name' => $this->faker->city(),
-            'address' => $this->faker->streetAddress(),
+            'name' => $this->faker->name(),
+            'address' => $this->faker->word(),
             'city' => $this->faker->city(),
-            'state' => 'KS',
-            'zip' => '12345',
+            'state' => $this->faker->word(),
+            'zip' => $this->faker->postcode(),
             'paid' => $this->faker->boolean(),
         ];
     }

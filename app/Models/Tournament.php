@@ -19,8 +19,24 @@ class Tournament extends Model
     protected $fillable = [
         'coach_id',
         'name',
+        'date',
+        'course_id',
+        'start_time',
+        'start_type',
+        'start_interval',
         'type',
+        'starting_hole',
+        'event',
+        'sub_tournament',
+        'tie_breaker',
+        'format',
         'cards',
+        'rounds',
+        'levels',
+        'rules',
+        'alert',
+        'sponsor',
+        'flights',
     ];
 
     /**
@@ -31,6 +47,7 @@ class Tournament extends Model
     protected $casts = [
         'id' => 'integer',
         'coach_id' => 'integer',
+        'date' => 'date',
     ];
 
     public function coach(): BelongsTo
@@ -56,5 +73,10 @@ class Tournament extends Model
     public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
+    }
+
+    public function schools(): HasMany
+    {
+        return $this->hasMany(School::class);
     }
 }
