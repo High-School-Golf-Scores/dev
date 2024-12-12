@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Livewire\Logout;
+use App\Livewire\GolfScoreForm;
 use App\Livewire\HomePage;
 use App\Livewire\Order\Index\Page;
-use App\Livewire\Post\ShowPosts;
 use App\Livewire\Schedule;
-use App\Livewire\ShowPlayers;
-
 use Illuminate\Support\Facades\Route;
+
+
+
 Route::view('/logout', 'logout')->name('logout');
 Route::get('/home-page', HomePage::class)->middleware(['auth', 'verified']);
 Route::get('/schedule', Schedule::class)->middleware(['auth', 'verified']);
+Route::get('/golf-scores', GolfScoreForm::class);
 
 
 Route::get('/store/{store}/orders', Page::class)
