@@ -17,9 +17,11 @@ class Hole extends Model
      */
     protected $fillable = [
         'course_id',
-        'number',
+        'hole_number',
         'par',
-        'distance',
+        'yardage_front_tee',
+        'yardage_middle_tee',
+        'yardage_back_tee',
     ];
 
     /**

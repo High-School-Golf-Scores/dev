@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Blog extends Model
+class Tees extends Model
 {
     use HasFactory;
 
@@ -16,11 +16,9 @@ class Blog extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'content',
-        'remark',
-        'user_id',
-        'published_at',
+        'course_id',
+        'name',
+        'timestamp',
     ];
 
     /**
@@ -30,12 +28,11 @@ class Blog extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'user_id' => 'integer',
-        'published_at' => 'timestamp',
+        'course_id' => 'integer',
     ];
 
-    public function user(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Course::class);
     }
 }

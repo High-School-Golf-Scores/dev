@@ -13,7 +13,7 @@ models:
 #      hasMany: Coach
 
   Player:
-    school_id: id foreign:schools
+    school_id: id foreign:schools constrained
     first_name: string
     last_name: string
     grad_year: integer
@@ -23,7 +23,7 @@ models:
       hasMany: Stat
 
   Coach:
-    school_id: id foreign:schools
+    school_id: id foreign:schools constrained
     name: string
     active: bool
     relationships:
@@ -32,7 +32,7 @@ models:
 
 
   Team:
-    school_id: id foreign:schools
+    school_id: id foreign:schools constrained
     level: integer
     relationships:
       belongsTo: School
@@ -40,14 +40,14 @@ models:
 
 
   School:
-    regional_id: id foreign:regionals
-    classification_id: id foreign:classifications
-    league_id: id foreign:leagues
+    regional_id: id foreign:regionals constrained
+    classification_id: id foreign:classifications constrained
+    league_id: id foreign:leagues constrained
     name: string
-    address: string
-    city: string
-    state: string
-    zip: string
+    address: string nullable
+    city: string nullable
+    state: string nullable
+    zip: string nullable
     paid: boolean
     relationships:
       hasMany: Team, Tag, Tournament
@@ -71,89 +71,103 @@ models:
     relationships:
       hasMany: School
 
+
+  Tees:
+    course_id: id foreign:course constrained
+    name: string
+    timestamp: false
+    relationships:
+      belongsTo: Course
+
   Tournament:
-    coach_id: id foreign:coaches
+    coach_id: id foreign:coaches constrained
     name: string
     date: date
     course_id: integer
-    start_time: time
+    start_time: time nullable
     start_type: integer
-    start_interval: time
+    start_interval: time nullable
     type: integer
     starting_hole: integer
-    event: string
-    sub_tournament: string
+    tees: integer nullable
+    sub_tournament: string nullable
     tie_breaker: integer
     format: integer
     cards: integer
     rounds: integer
     levels: integer
-    rules: text
-    alert: string
-    sponsor: string
+    rules: text nullable
+    alert: string nullable
+    sponsor: string nullable
     flights: integer
     relationships:
       belongsTo: Coach
       hasMany: Round, Course, Card, Tag, School
   #
   Course:
-    tournament_id: id foreign:tournaments
-    hole_id: id foreign:holes
     name: string
-    rating: decimal
-    slope: decimal
-    tees: string
+    par: integer nullable
+    slope: integer nullable
+    front_tee_rating: decimal:5,1
+    middle_tee_rating: decimal:5,1
+    back_tee_rating: decimal:5,1
+    front_tee_yardage: integer nullable
+    middle_tee_yardage: integer nullable
+    back_tee_yardage: integer nullable
     relationships:
-      belongsTo: Tournament
-      hasMany: Hole
+      hasMany: Hole, Tees, Tournament
   #
   Card:
-    tournament_id: id foreign:tournaments
-    round_id: id foreign:rounds
+    tournament_id: id foreign:tournaments constrained
+    round_id: id foreign:rounds constrained
+    card_number: integer
     starting_hole: integer
     tee_time: string
     comment: string
     relationships:
       belongsTo: Round, Tournament
 
+
   #
   Hole:
-    course_id: id foreign:courses
-    number: integer
+    course_id: id foreign:course constrained
+    hole_number: integer
     par: integer
-    distance: integer
+    yardage_front_tee: integer nullable
+    yardage_middle_tee: integer nullable
+    yardage_back_tee: integer nullable
     relationships:
       belongsTo: Course
   #
   Round:
-    tournament_id: id foreign:tournaments
+    tournament_id: id foreign:tournaments constrained
     number: integer
     relationships:
       belongsTo: Tournament
       hasMany: Card
   #
   Stat:
-    player_id: id foreign:players
-    gir: integer
-    putts: integer
-    fairways: integer
+    player_id: id foreign:players constrained
+    gir: integer nullable
+    putts: integer nullable
+    fairways: integer nullable
     relationships:
       belongsTo: Player
 
   Tag:
-    school_id: id foreign:schools
-    tournament_id: id foreign:tournaments
+    school_id: id foreign:schools constrained
+    tournament_id: id foreign:tournaments constrained
     name: string
     relationships:
       belongsToMany: School, Tournament
     timestamp: false
 
-  Blog:
+  Post:
     title: string:400
     content: longtext
     remark: string:100 nullable
     user_id: id foreign
-    published_at: nullable timestamp
+    published_at: timestamp
     relationships:
       belongsTo: User
 
@@ -300,8 +314,8 @@ seeders: Player, Coach, Tournament, Card
 #
 #  Course:
 #    index:
-#      query: all:courses
-#      render: course.index with:courses
+#      query: all:course
+#      render: course.index with:course
 #    create:
 #      render: course.create
 #    store:

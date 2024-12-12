@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-8 w-[50rem] px-8">
+<div class="flex flex-col gap-8 w-[75rem] px-8">
     <div class="flex justify-between">
         <h1 class="text-3xl font-semibold leading-6 text-slate-900">Coaches Summaries</h1>
 

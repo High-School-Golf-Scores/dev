@@ -14,7 +14,7 @@ class MultiSelectSchools extends Component
     {
         // Load the list of schools
         $this->schools = School::orderBy('name')->get(['id', 'name']);
-        dd($this->schools);
+//        dd($this->schools);
     }
 
     public function render()

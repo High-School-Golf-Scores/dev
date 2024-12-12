@@ -3,22 +3,30 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use App\Models\Post;
+use App\Models\User;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
- */
 class PostFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * The name of the factory's corresponding model.
      *
-     * @return array<string, mixed>
+     * @var string
+     */
+    protected $model = Post::class;
+
+    /**
+     * Define the model's default state.
      */
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word(),
-            'content' => $this->faker->sentence(nbWords: 20),
+            'title' => $this->faker->sentence(4),
+            'content' => $this->faker->paragraphs(3, true),
+            'remark' => $this->faker->regexify('[A-Za-z0-9]{100}'),
+            'user_id' => User::factory(),
+            'published_at' => $this->faker->dateTime(),
         ];
     }
 }

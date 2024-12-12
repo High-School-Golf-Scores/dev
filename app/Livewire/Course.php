@@ -8,13 +8,13 @@ use Livewire\Component;
 
 
 #[Layout('layouts.app')]
-#[Title('Player Roster | KGCA')]
-class Player extends Component
+#[Title('Courses | KGCA')]
+class Course extends Component
 {
     public function render()
     {
-        return view('livewire.player', [
-            'players' => (new Player)->all(),
+        return view('livewire.courses', [
+            'courses' => Course::all(),
         ]);
     }
 }

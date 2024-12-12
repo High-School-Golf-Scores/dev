@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreignId('classification_id')->constrained();
             $table->foreignId('league_id')->constrained();
             $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->boolean('paid');
             $table->timestamps();
         });

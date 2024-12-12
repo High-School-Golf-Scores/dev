@@ -1,14 +1,12 @@
 <div>
-    <div class="flex flex-col gap-8 w-[50rem] px-8">
+    <div class="flex flex-col gap-8 w-[75rem] px-8">
         <div class="flex justify-between">
             <h1 class="text-3xl font-semibold leading-6 text-slate-900">New Roster</h1>
 
             <livewire:add-player-dialog @added="$refresh" />
         </div>
-        <div>Roster Level</div>
 
-   {{ $user }}
-
+{{--        {{ $players }}--}}
         <table class="min-w-full divide-y divide-slate-300 bg-white shadow rounded-xl">
             <thead>
             <tr class="text-left text-slate-800">

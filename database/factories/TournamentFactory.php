@@ -31,7 +31,7 @@ class TournamentFactory extends Factory
             'start_interval' => $this->faker->time(),
             'type' => $this->faker->numberBetween(-10000, 10000),
             'starting_hole' => $this->faker->numberBetween(-10000, 10000),
-            'event' => $this->faker->word(),
+            'tees' => $this->faker->numberBetween(-10000, 10000),
             'sub_tournament' => $this->faker->word(),
             'tie_breaker' => $this->faker->numberBetween(-10000, 10000),
             'format' => $this->faker->numberBetween(-10000, 10000),

@@ -23,9 +23,11 @@ class HoleFactory extends Factory
     {
         return [
             'course_id' => Course::factory(),
-            'number' => $this->faker->numberBetween(-10000, 10000),
+            'hole_number' => $this->faker->numberBetween(-10000, 10000),
             'par' => $this->faker->numberBetween(-10000, 10000),
-            'distance' => $this->faker->numberBetween(-10000, 10000),
+            'yardage_front_tee' => $this->faker->numberBetween(-10000, 10000),
+            'yardage_middle_tee' => $this->faker->numberBetween(-10000, 10000),
+            'yardage_back_tee' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

@@ -26,7 +26,7 @@ class Tournament extends Model
         'start_interval',
         'type',
         'starting_hole',
-        'event',
+        'tees',
         'sub_tournament',
         'tie_breaker',
         'format',

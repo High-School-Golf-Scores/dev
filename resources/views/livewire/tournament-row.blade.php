@@ -11,6 +11,7 @@
             </x-menu.button>
 
             <x-menu.items>
+
                 <x-dialog wire:model="showEditDialog">
                     <x-dialog.open>
                         <x-menu.close>
@@ -40,8 +41,9 @@
                             <flux:separator />
 
                             <div class="relative max-w-64 mt-4 ">
-                                <div>
-                                    <input wire:model="form.date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                                <div>{{ $tournament->date }}
+                                    <input wire:model="form.date" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
+
                                     @error('form.date')<div class="text-sm text-red-500 font-normal">{{ $message }}</div>@enderror
                                 </div> <div>
                                     <input wire:model="form.start_time" type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg ps-10 p-2.5 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="0:00" max="23:00" value="13:00" required />
@@ -161,14 +163,14 @@
 
 
                             <div class="flex flex-col-4 py-4">
-                                <div class="mr-4">
+                                <div class="mr-8">
                                     <flux:radio.group wire:model="form.format" label="Format">
                                         <flux:radio value="1" label="Stroke Play" checked />
                                         <flux:radio value="2" label="Scramble" />
                                         <flux:radio value="3" label="Match Play" />
                                     </flux:radio.group>
                                 </div>
-                                <div class="mr-4">
+                                <div class="mr-8">
                                     <flux:radio.group wire:model="form.levels" label="Level">
                                         <flux:radio value="1" label="Varsity" checked />
                                         <flux:radio value="2" label="JV" />
@@ -176,21 +178,20 @@
                                     </flux:radio.group>
                                 </div>
 
-                                <div>
+                                <div class="mr-8">
+                                    <flux:radio.group wire:model="form.tees" label="Tees">
+                                        <flux:radio value="1" label="Front" checked />
+                                        <flux:radio value="2" label="Middle" />
+                                        <flux:radio value="3" label="Back" />
+                                    </flux:radio.group>
+                                </div>
+
+                                <div class="mr-8">
                                     <flux:radio.group wire:model="form.flights" label="Flights">
                                         <flux:radio value="1" label="1" checked />
                                         <flux:radio value="2" label="2" />
                                         <flux:radio value="3" label="3" />
                                         <flux:radio value="4" label="4" />
-                                    </flux:radio.group>
-                                </div>
-
-                                <div>
-                                    <flux:radio.group wire:model="form.event" label="Flights">
-                                        <flux:radio value="1" label="Event 1" checked />
-                                        <flux:radio value="2" label="Event 2" />
-                                        <flux:radio value="3" label="Event 3" />
-                                        <flux:radio value="4" label="Event 4" />
                                     </flux:radio.group>
                                 </div>
                             </div>

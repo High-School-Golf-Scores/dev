@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
@@ -17,12 +16,15 @@ class Course extends Model
      * @var array
      */
     protected $fillable = [
-        'tournament_id',
-        'hole_id',
         'name',
-        'rating',
+        'par',
         'slope',
-        'tees',
+        'front_tee_rating',
+        'middle_tee_rating',
+        'back_tee_rating',
+        'front_tee_yardage',
+        'middle_tee_yardage',
+        'back_tee_yardage',
     ];
 
     /**
@@ -32,24 +34,23 @@ class Course extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'tournament_id' => 'integer',
-        'hole_id' => 'integer',
-        'rating' => 'decimal',
-        'slope' => 'decimal',
+        'front_tee_rating' => 'decimal:2',
+        'middle_tee_rating' => 'decimal:2',
+        'back_tee_rating' => 'decimal:2',
     ];
-
-    public function tournament(): BelongsTo
-    {
-        return $this->belongsTo(Tournament::class);
-    }
-
-    public function hole(): BelongsTo
-    {
-        return $this->belongsTo(Hole::class);
-    }
 
     public function holes(): HasMany
     {
         return $this->hasMany(Hole::class);
+    }
+
+    public function tees(): HasMany
+    {
+        return $this->hasMany(Tees::class);
+    }
+
+    public function tournaments(): HasMany
+    {
+        return $this->hasMany(Tournament::class);
     }
 }

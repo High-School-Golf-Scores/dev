@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Form;
 use Livewire\Attributes\Validate;
 use App\Models\Post;
@@ -30,6 +31,8 @@ class PostForm extends Form
         Post::create([
             'title' => $this->title,
             'content' => $this->content,
+            'user_id' => Auth::user()->id,
+            'published_at' => now(),
         ]);
 
         $this->reset(['title', 'content']);

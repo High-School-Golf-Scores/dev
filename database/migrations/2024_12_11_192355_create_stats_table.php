@@ -11,12 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::disableForeignKeyConstraints();
+
+        Schema::create('stats', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('content');
+            $table->foreignId('player_id')->constrained();
+            $table->integer('gir')->nullable();
+            $table->integer('putts')->nullable();
+            $table->integer('fairways')->nullable();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('stats');
     }
 };

@@ -6,6 +6,7 @@ created:
     - database/factories/RegionalFactory.php
     - database/factories/ClassificationFactory.php
     - database/factories/LeagueFactory.php
+    - database/factories/TeesFactory.php
     - database/factories/TournamentFactory.php
     - database/factories/CourseFactory.php
     - database/factories/CardFactory.php
@@ -13,24 +14,25 @@ created:
     - database/factories/RoundFactory.php
     - database/factories/StatFactory.php
     - database/factories/TagFactory.php
-    - database/factories/BlogFactory.php
-    - database/migrations/2024_12_10_165243_create_players_table.php
-    - database/migrations/2024_12_10_165244_create_coaches_table.php
-    - database/migrations/2024_12_10_165245_create_teams_table.php
-    - database/migrations/2024_12_10_165246_create_schools_table.php
-    - database/migrations/2024_12_10_165247_create_regionals_table.php
-    - database/migrations/2024_12_10_165248_create_classifications_table.php
-    - database/migrations/2024_12_10_165249_create_leagues_table.php
-    - database/migrations/2024_12_10_165250_create_tournaments_table.php
-    - database/migrations/2024_12_10_165251_create_courses_table.php
-    - database/migrations/2024_12_10_165252_create_cards_table.php
-    - database/migrations/2024_12_10_165253_create_holes_table.php
-    - database/migrations/2024_12_10_165254_create_rounds_table.php
-    - database/migrations/2024_12_10_165255_create_stats_table.php
-    - database/migrations/2024_12_10_165256_create_tags_table.php
-    - database/migrations/2024_12_10_165257_create_blogs_table.php
-    - database/migrations/2024_12_10_165258_create_school_tag_table.php
-    - database/migrations/2024_12_10_165259_create_tag_tournament_table.php
+    - database/factories/PostFactory.php
+    - database/migrations/2024_12_11_192342_create_players_table.php
+    - database/migrations/2024_12_11_192343_create_coaches_table.php
+    - database/migrations/2024_12_11_192344_create_teams_table.php
+    - database/migrations/2024_12_11_192345_create_schools_table.php
+    - database/migrations/2024_12_11_192346_create_regionals_table.php
+    - database/migrations/2024_12_11_192347_create_classifications_table.php
+    - database/migrations/2024_12_11_192348_create_leagues_table.php
+    - database/migrations/2024_12_11_192349_create_tees_table.php
+    - database/migrations/2024_12_11_192350_create_tournaments_table.php
+    - database/migrations/2024_12_11_192351_create_courses_table.php
+    - database/migrations/2024_12_11_192352_create_cards_table.php
+    - database/migrations/2024_12_11_192353_create_holes_table.php
+    - database/migrations/2024_12_11_192354_create_rounds_table.php
+    - database/migrations/2024_12_11_192355_create_stats_table.php
+    - database/migrations/2024_12_11_192356_create_tags_table.php
+    - database/migrations/2024_12_11_192357_create_posts_table.php
+    - database/migrations/2024_12_11_192358_create_school_tag_table.php
+    - database/migrations/2024_12_11_192359_create_tag_tournament_table.php
     - app/Models/Player.php
     - app/Models/Coach.php
     - app/Models/Team.php
@@ -38,6 +40,7 @@ created:
     - app/Models/Regional.php
     - app/Models/Classification.php
     - app/Models/League.php
+    - app/Models/Tees.php
     - app/Models/Tournament.php
     - app/Models/Course.php
     - app/Models/Card.php
@@ -45,29 +48,29 @@ created:
     - app/Models/Round.php
     - app/Models/Stat.php
     - app/Models/Tag.php
-    - app/Models/Blog.php
+    - app/Models/Post.php
     - database/seeders/PlayerSeeder.php
     - database/seeders/CoachSeeder.php
     - database/seeders/TournamentSeeder.php
     - database/seeders/CardSeeder.php
 models:
-    Order: { number: biginteger, email: string, amount: integer, status: string, ordered_at: timestamp, product_id: biginteger, store_id: biginteger }
-    Post: { title: string, content: string }
-    Product: { name: string, store_id: biginteger }
-    Store: { name: string, user_id: biginteger }
-    User: { first_name: string, last_name: string, email: string, email_verified_at: 'timestamp nullable', password: string, school_id: 'integer default:1', remember_token: 'string:100 nullable' }
-    Player: { school_id: 'id foreign:schools', first_name: string, last_name: string, grad_year: integer, active: boolean, relationships: { belongsTo: School, hasMany: Stat } }
-    Coach: { school_id: 'id foreign:schools', name: string, active: bool, relationships: { belongsTo: School, hasMany: Tournament } }
-    Team: { school_id: 'id foreign:schools', level: integer, relationships: { belongsTo: School, hasMany: 'Player, Coach' } }
-    School: { regional_id: 'id foreign:regionals', classification_id: 'id foreign:classifications', league_id: 'id foreign:leagues', name: string, address: string, city: string, state: string, zip: string, paid: boolean, relationships: { hasMany: 'Team, Tag, Tournament', belongsTo: 'Regional, Classification, League' } }
+    Order: {  }
+    Product: {  }
+    Store: {  }
+    User: { first_name: string, last_name: string, email: string, email_verified_at: 'timestamp nullable', password: string, school_id: integer, remember_token: 'string:100 nullable' }
+    Player: { school_id: 'id foreign:schools constrained', first_name: string, last_name: string, grad_year: integer, active: boolean, relationships: { belongsTo: School, hasMany: Stat } }
+    Coach: { school_id: 'id foreign:schools constrained', name: string, active: bool, relationships: { belongsTo: School, hasMany: Tournament } }
+    Team: { school_id: 'id foreign:schools constrained', level: integer, relationships: { belongsTo: School, hasMany: 'Player, Coach' } }
+    School: { regional_id: 'id foreign:regionals constrained', classification_id: 'id foreign:classifications constrained', league_id: 'id foreign:leagues constrained', name: string, address: 'string nullable', city: 'string nullable', state: 'string nullable', zip: 'string nullable', paid: boolean, relationships: { hasMany: 'Team, Tag, Tournament', belongsTo: 'Regional, Classification, League' } }
     Regional: { name: string, timestamp: false, relationships: { hasMany: School } }
     Classification: { name: string, timestamp: false, relationships: { hasMany: School } }
     League: { name: string, timestamp: false, relationships: { hasMany: School } }
-    Tournament: { coach_id: 'id foreign:coaches', name: string, date: date, course_id: integer, start_time: time, start_type: integer, start_interval: time, type: integer, starting_hole: integer, event: string, sub_tournament: string, tie_breaker: integer, format: integer, cards: integer, rounds: integer, levels: integer, rules: text, alert: string, sponsor: string, flights: integer, relationships: { belongsTo: Coach, hasMany: 'Round, Course, Card, Tag, School' } }
-    Course: { tournament_id: 'id foreign:tournaments', hole_id: 'id foreign:holes', name: string, rating: decimal, slope: decimal, tees: string, relationships: { belongsTo: Tournament, hasMany: Hole } }
-    Card: { tournament_id: 'id foreign:tournaments', round_id: 'id foreign:rounds', starting_hole: integer, tee_time: string, comment: string, relationships: { belongsTo: 'Round, Tournament' } }
-    Hole: { course_id: 'id foreign:courses', number: integer, par: integer, distance: integer, relationships: { belongsTo: Course } }
-    Round: { tournament_id: 'id foreign:tournaments', number: integer, relationships: { belongsTo: Tournament, hasMany: Card } }
-    Stat: { player_id: 'id foreign:players', gir: integer, putts: integer, fairways: integer, relationships: { belongsTo: Player } }
-    Tag: { school_id: 'id foreign:schools', tournament_id: 'id foreign:tournaments', name: string, relationships: { belongsToMany: 'School, Tournament' }, timestamp: false }
-    Blog: { title: 'string:400', content: longtext, remark: 'string:100 nullable', user_id: 'id foreign', published_at: 'nullable timestamp', relationships: { belongsTo: User } }
+    Tees: { course_id: 'id foreign:course constrained', name: string, timestamp: false, relationships: { belongsTo: Course } }
+    Tournament: { coach_id: 'id foreign:coaches constrained', name: string, date: date, course_id: integer, start_time: 'time nullable', start_type: integer, start_interval: 'time nullable', type: integer, starting_hole: integer, tees: 'integer nullable', sub_tournament: 'string nullable', tie_breaker: integer, format: integer, cards: integer, rounds: integer, levels: integer, rules: 'text nullable', alert: 'string nullable', sponsor: 'string nullable', flights: integer, relationships: { belongsTo: Coach, hasMany: 'Round, Course, Card, Tag, School' } }
+    Course: { name: string, par: 'integer nullable', slope: 'integer nullable', front_tee_rating: 'decimal:5,2', middle_tee_rating: 'decimal:5,2', back_tee_rating: 'decimal:5,2', front_tee_yardage: 'integer nullable', middle_tee_yardage: 'integer nullable', back_tee_yardage: 'integer nullable', relationships: { hasMany: 'Hole, Tees, Tournament' } }
+    Card: { tournament_id: 'id foreign:tournaments constrained', round_id: 'id foreign:rounds constrained', starting_hole: integer, tee_time: string, comment: string, relationships: { belongsTo: 'Round, Tournament' } }
+    Hole: { course_id: 'id foreign:course constrained', hole_number: integer, par: integer, yardage_front_tee: 'integer nullable', yardage_middle_tee: 'integer nullable', yardage_back_tee: 'integer nullable', relationships: { belongsTo: Course } }
+    Round: { tournament_id: 'id foreign:tournaments constrained', number: integer, relationships: { belongsTo: Tournament, hasMany: Card } }
+    Stat: { player_id: 'id foreign:players constrained', gir: 'integer nullable', putts: 'integer nullable', fairways: 'integer nullable', relationships: { belongsTo: Player } }
+    Tag: { school_id: 'id foreign:schools constrained', tournament_id: 'id foreign:tournaments constrained', name: string, relationships: { belongsToMany: 'School, Tournament' }, timestamp: false }
+    Post: { title: 'string:400', content: longtext, remark: 'string:100 nullable', user_id: 'id foreign', published_at: timestamp, relationships: { belongsTo: User } }

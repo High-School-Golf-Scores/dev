@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('holes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained();
-            $table->integer('number');
+            $table->integer('hole_number');
             $table->integer('par');
-            $table->integer('distance');
+            $table->integer('yardage_front_tee')->nullable();
+            $table->integer('yardage_middle_tee')->nullable();
+            $table->integer('yardage_back_tee')->nullable();
             $table->timestamps();
         });
 

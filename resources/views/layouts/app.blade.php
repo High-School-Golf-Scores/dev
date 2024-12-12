@@ -54,6 +54,7 @@
                         <flux:navlist.item icon="home" href="/home-page" current>Home</flux:navlist.item>
                         <flux:navlist.item icon="inbox" badge="12" href="/tournaments">Tournaments</flux:navlist.item>
                         <flux:navlist.item icon="document-text" href="/players">Players</flux:navlist.item>
+                        <flux:navlist.item icon="calendar" href="/courses">Courses</flux:navlist.item>
                         <flux:navlist.item icon="calendar" href="/schedule">Calendar</flux:navlist.item>
                         <flux:navlist.item icon="document-text" href="/posts">Posts</flux:navlist.item>
                         <flux:navlist.item icon="document-text" href="/store/1/orders">Orders</flux:navlist.item>

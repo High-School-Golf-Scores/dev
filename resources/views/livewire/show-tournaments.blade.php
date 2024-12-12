@@ -1,5 +1,5 @@
 <div>
-    <div class="flex flex-col gap-8 w-[50rem] px-8">
+    <div class="flex flex-col gap-8 w-[75rem] px-8">
         <div class="flex justify-between">
             <h1 class="text-3xl font-semibold leading-6 text-slate-900">Tournaments</h1>
 
@@ -11,7 +11,7 @@
             <tr class="text-left text-slate-800">
                 <th class="pl-6 rounded-tl-xl py-4 font-semibold bg-slate-50">Name</th>
                 <th class="pl-6 rounded-tl-xl py-4 font-semibold bg-slate-50">Type</th>
-                <th class="pl-4 py-4 font-semibold bg-slate-50 hidden sm:table-cell">Cards</th>
+                <th class="pl-4 py-4 font-semibold bg-slate-50 hidden sm:table-cell">Click to Edit Cards</th>
                 <th class="pl-4 rounded-tr-xl pr-4 bg-slate-50"></th>
             </tr>
             </thead>

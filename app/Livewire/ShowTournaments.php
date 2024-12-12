@@ -5,9 +5,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Tournament;
+use App\Models\User;
 
 class ShowTournaments extends Component
 {
+    public User $user;
     public function delete($tournamentId)
     {
         $tournament = Tournament::find($tournamentId);

@@ -5,73 +5,71 @@ namespace App\Livewire\Forms;
 use App\Models\User;
 use Livewire\Form;
 use Livewire\Attributes\Rule;
-use Livewire\Attributes\Validate;
 use App\Models\Tournament;
-use phpDocumentor\Reflection\Types\Integer;
 
 class TournamentForm extends Form
 {
     public User $user;
     public string $school_id;
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $name = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $date = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $course_id = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $start_time= '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $start_type = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $start_interval = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $type = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $starting_hole = '1';
 
-//    #[Rule('required')]
-    public string $event = '1';
+    #[Rule('required')]
+    public string $tees = '3';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $sub_tournament = '0';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $tie_breaker = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $format = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $cards = '';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $rounds = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $levels = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $rules = 'Play Ball Up, 1 scorecard length.';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $alert = 'Weather Alert.';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $sponsor = 'PnG Computers';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $flights = '1';
 
-//    #[Rule('required')]
+    #[Rule('required')]
     public string $coach_id = '';
 
 
@@ -94,7 +92,7 @@ class TournamentForm extends Form
         $this->start_interval = $tournament->start_interval;
         $this->type = $tournament->type;
         $this->starting_hole = $tournament->starting_hole;
-        $this->event = $tournament->event;
+        $this->tees = $tournament->tees;
         $this->sub_tournament = $tournament->sub_tournament;
         $this->tie_breaker = $tournament->tie_breaker;
         $this->format = $tournament->format;
@@ -123,7 +121,7 @@ class TournamentForm extends Form
             'start_interval' => $this->start_interval,
             'type' => $this->type,
             'starting_hole' => $this->starting_hole,
-            'event' => $this->event,
+            'tees' => $this->tees,
             'sub_tournament' => $this->sub_tournament,
             'tie_breaker' => $this->tie_breaker,
             'format' => $this->format,
@@ -139,7 +137,8 @@ class TournamentForm extends Form
     }
 
     public function update() {
-//                $this->validate();
+
+//        $this->validate();
 
         $this->tournament->update([
             'name' => $this->name,
@@ -150,7 +149,7 @@ class TournamentForm extends Form
             'start_interval' => $this->start_interval,
             'type' => $this->type,
             'starting_hole' => $this->starting_hole,
-            'event' => $this->event,
+            'tees' => $this->tees,
             'sub_tournament' => $this->sub_tournament,
             'tie_breaker' => $this->tie_breaker,
             'format' => $this->format,

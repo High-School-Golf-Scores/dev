@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             TournamentSeeder::class,
         ]);
-//        \App\Models\User::create([
-//            'first_name' => 'Jelly',
-//            'last_name' => 'McSquid',
-//            'email' => 'jelly@laravel.livewire.com',
-//            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//        ]);
+        \App\Models\User::create([
+            'first_name' => 'Jelly',
+            'last_name' => 'McSquid',
+            'email' => 'jelly@laravel.livewire.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
 
         \App\Models\Store::create([
             'name' => 'MLM Industries',

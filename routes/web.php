@@ -9,10 +9,8 @@ use App\Livewire\ShowPlayers;
 
 use Illuminate\Support\Facades\Route;
 Route::view('/logout', 'logout')->name('logout');
-//Route::get('/players', ShowPlayers::class)->middleware(['auth', 'verified']);
 Route::get('/home-page', HomePage::class)->middleware(['auth', 'verified']);
 Route::get('/schedule', Schedule::class)->middleware(['auth', 'verified']);
-//Route::get('/posts', ShowPosts::class)->middleware(['auth', 'verified']);
 
 
 Route::get('/store/{store}/orders', Page::class)
@@ -20,15 +18,12 @@ Route::get('/store/{store}/orders', Page::class)
 
 Route::get('/roster/{store}/players', Page::class)
     ->middleware('can:view,store');
-//
-//Route::get('/store/{store}/orders', Page::class)
-//    ->middleware('can:view,store');
-
 
 
 Route::view('/', 'welcome');
 Route::view('/posts', 'summaries')->middleware(['auth', 'verified']);
 Route::view('/players', 'roster')->middleware(['auth', 'verified']);
+Route::view('/courses', 'courses');
 Route::view('/tournaments', 'tournaments')->middleware(['auth', 'verified']);
 //Route::view('/store/{store}/orders', 'orders');
 
