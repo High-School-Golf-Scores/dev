@@ -6,6 +6,7 @@ use App\Livewire\Forms\CourseForm;
 use App\Models\User;
 use Livewire\Component;
 
+
 class AddCourseDialog extends Component
 {
 

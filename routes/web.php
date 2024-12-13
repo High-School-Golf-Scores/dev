@@ -5,7 +5,7 @@ use App\Livewire\HomePage;
 use App\Livewire\Order\Index\Page;
 use App\Livewire\Schedule;
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\GolfCourseForm;
 
 
 Route::view('/logout', 'logout')->name('logout');
