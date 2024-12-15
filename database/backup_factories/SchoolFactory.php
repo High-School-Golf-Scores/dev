@@ -27,7 +27,7 @@ class SchoolFactory extends Factory
             'regional_id' => Regional::factory(),
             'classification_id' => Classification::factory(),
             'league_id' => League::factory(),
-            'name' => $this->faker->randomElement(['Smith Center', 'Phillipsburg', 'Norton']),
+            'name' => $this->faker->randomElement(['Smith Center', 'Hutchinson', 'Washburn Rural', 'Hesston']),
             'address' => $this->faker->address(),
             'city' => $this->faker->city(),
             'state' => 'KS',

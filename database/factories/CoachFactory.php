@@ -23,8 +23,8 @@ class CoachFactory extends Factory
     {
         return [
             'school_id' => School::factory(),
-            'name' => $this->faker->name(),
-            'active' => $this->faker->word(),
+            'name' => $this->faker->randomElement(['Greg Hobelmann', 'Keith Sides', 'Dave Stover']),
+            'active' => '1',
         ];
     }
 }

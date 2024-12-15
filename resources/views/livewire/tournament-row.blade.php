@@ -1,8 +1,8 @@
 <tr class="text-left text-slate-900">
     <td class="pl-6 py-4 pr-3 font-medium">{{ $tournament->name }}</td>
     <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell">{{ $tournament->type }}</td>
-    <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell"><button wire:click {{ $tournament->id }}>Assign Players</button></td>
-    <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell"><button wire:click {{ $tournament->id }}>Assign Teams</button></td>
+    <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell"><a href="/player-selection"  wire:click {{ $tournament->id }}>Assign Players</a></td>
+    <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell"><a href="/school-selection"  wire:click {{ $tournament->id }}>Assign Teams</a></td>
     <td class="pl-4 py-4 text-left text-slate-500 hidden sm:table-cell">{{ $tournament->cards }}</td>
 
     <td class="pl-4 py-4 text-right pr-6 flex gap-2 justify-end">

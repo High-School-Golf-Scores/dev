@@ -50,6 +50,13 @@ class Tournament extends Model
         'date' => 'date',
     ];
 
+
+    public function schools()
+    {
+        return $this->belongsToMany(School::class);
+    }
+
+
     public function coach(): BelongsTo
     {
         return $this->belongsTo(Coach::class);
@@ -75,8 +82,5 @@ class Tournament extends Model
         return $this->hasMany(Tag::class);
     }
 
-    public function schools(): HasMany
-    {
-        return $this->hasMany(School::class);
-    }
+
 }

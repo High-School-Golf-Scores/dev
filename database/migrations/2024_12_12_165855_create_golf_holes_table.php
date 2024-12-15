@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('golf_holes', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('hole_number');
-            $table->unsignedInteger('par');
-            $table->unsignedInteger('distance_red');
-            $table->unsignedInteger('distance_white');
-            $table->unsignedInteger('distance_blue');
-            $table->timestamps();
-        });
+//        Schema::create('golf_holes', function (Blueprint $table) {
+//            $table->id();
+//            $table->unsignedInteger('hole_number');
+//            $table->unsignedInteger('par');
+//            $table->unsignedInteger('distance_red');
+//            $table->unsignedInteger('distance_white');
+//            $table->unsignedInteger('distance_blue');
+//            $table->timestamps();
+//        });
     }
 
     /**

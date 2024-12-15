@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\SchoolSelection;
 use App\Livewire\GolfScoreForm;
 use App\Livewire\HomePage;
 use App\Livewire\Order\Index\Page;
@@ -12,6 +13,8 @@ Route::view('/logout', 'logout')->name('logout');
 Route::get('/home-page', HomePage::class)->middleware(['auth', 'verified']);
 Route::get('/schedule', Schedule::class)->middleware(['auth', 'verified']);
 Route::get('/golf-scores', GolfScoreForm::class);
+Route::get('/school-selection', SchoolSelection::class)
+    ->middleware(['auth', 'verified'])->name('school-selection');
 
 
 Route::get('/store/{store}/orders', Page::class)
@@ -24,7 +27,7 @@ Route::get('/roster/{store}/players', Page::class)
 Route::view('/', 'welcome');
 Route::view('/posts', 'summaries')->middleware(['auth', 'verified']);
 Route::view('/players', 'roster')->middleware(['auth', 'verified']);
-Route::view('/courses', 'courses');
+Route::view('/courses', 'courses')->middleware(['auth', 'verified']);
 Route::view('/tournaments', 'tournaments')->middleware(['auth', 'verified']);
 //Route::view('/store/{store}/orders', 'orders');
 

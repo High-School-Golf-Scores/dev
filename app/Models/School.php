@@ -41,6 +41,11 @@ class School extends Model
         'paid' => 'boolean',
     ];
 
+    public function tournaments()
+    {
+        return $this->belongsToMany(Tournament::class);
+    }
+
     public function teams(): HasMany
     {
         return $this->hasMany(Team::class);
@@ -51,10 +56,7 @@ class School extends Model
         return $this->hasMany(Tag::class);
     }
 
-    public function tournaments(): HasMany
-    {
-        return $this->hasMany(Tournament::class);
-    }
+
 
     public function regional(): BelongsTo
     {

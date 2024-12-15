@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Logout extends Component
 {
     public function logout()
     {
-        Auth::logout(); // Log out the user
-        session()->invalidate(); // Invalidate the session
-        session()->regenerateToken(); // Regenerate the CSRF token for security
-
-        return redirect('/'); // Redirect to the home page (or any other page)
+        Auth::logout();
+        return redirect('/login');
     }
 
     public function render()

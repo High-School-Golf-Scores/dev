@@ -25,19 +25,26 @@ new #[Layout('layouts.guest')] class extends Component
      */
     public function mount() {
 
+
+//        dd($schools);
+
+
+    }
+
+    public function showRegistrationForm()
+    {
+        $schools = School::all();
+        return view('auth.register', compact('schools'));
     }
 
     public function register()
     {
-
-
         $validated = $this->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'school_id' => ['required'],
-
         ]);
 
 
@@ -97,16 +104,16 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- School Select -->
-        <input wire:model="school_id" name="school_id" >
-
-{{--        <div class="mt-4">--}}
-{{--            <x-input-label for="school_id" />--}}
-{{--                <x-input-select wire:model="school_id" value="1" class="form-control">--}}
-{{--                        <option value="1">Smith Center</option>--}}
-{{--                </x-input-select>--}}
-{{--            <x-input-error :messages="$errors->get('school_id')" class="mt-2" />--}}
-
-{{--        </div>--}}
+        <div class="form-group">
+            <label for="school_id">School</label>
+            <select id="school_id" class="form-control" wire:model="school_id">
+                <option value="">Select a School</option>
+                @foreach ($schools as $school)
+                    <option value="{{ $school->id }}">{{ $school->name }}</option>
+                @endforeach
+            </select>
+            @error('school_id') <span class="text-danger">{{ $message }}</span> @enderror
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>

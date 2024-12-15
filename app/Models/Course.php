@@ -34,9 +34,9 @@ class Course extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'front_tee_rating' => 'decimal:2',
-        'middle_tee_rating' => 'decimal:2',
-        'back_tee_rating' => 'decimal:2',
+        'front_tee_rating' => 'decimal:1',
+        'middle_tee_rating' => 'decimal:1',
+        'back_tee_rating' => 'decimal:1',
     ];
 
     public function holes(): HasMany

@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('cards', function (Blueprint $table) {
+        Schema::create('coaches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tournament_id')->constrained();
-            $table->foreignId('round_id')->constrained();
-            $table->integer('starting_hole');
-            $table->string('tee_time');
-            $table->string('comment');
+            $table->foreignId('school_id')->default(1)->constrained('schools')->cascadeOnDelete();
+            $table->string('name')->default('Coach');
+            $table->string('active')->default(1);
             $table->timestamps();
         });
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cards');
+        Schema::dropIfExists('coaches');
     }
 };

@@ -18,6 +18,7 @@ class Card extends Model
     protected $fillable = [
         'tournament_id',
         'round_id',
+        'card_number',
         'starting_hole',
         'tee_time',
         'comment',

@@ -23,7 +23,7 @@ class TournamentFactory extends Factory
     {
         return [
             'coach_id' => Coach::factory(),
-            'name' => $this->faker->city(' Invitational'),
+            'name' => $this->faker->name(),
             'date' => $this->faker->date(),
             'course_id' => $this->faker->numberBetween(1, 100),
             'start_time' => $this->faker->time(),

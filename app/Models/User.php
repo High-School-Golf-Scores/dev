@@ -48,9 +48,19 @@ class User extends Authenticatable
         ];
     }
 
-public function mount(){
-    Auth::user()->first_name;
-}
+    public function mount(){
+        Auth::user()->first_name;
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 
 
 }

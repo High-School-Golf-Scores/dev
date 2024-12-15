@@ -22,8 +22,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => 'First Tournament Results',
-            'content' => 'We started out great, Tom shot his best score ever...',
+            'title' => $this->faker->sentence(4),
+            'content' => $this->faker->paragraphs(3, true),
             'remark' => $this->faker->regexify('[A-Za-z0-9]{100}'),
             'user_id' => User::factory(),
             'published_at' => $this->faker->dateTime(),

@@ -15,9 +15,15 @@ return new class extends Migration
 
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('regional_id')->constrained();
-            $table->foreignId('classification_id')->constrained();
-            $table->foreignId('league_id')->constrained();
+//            $table->foreignId('regional_id')->constrained();
+            $table->unsignedBigInteger('regional_id')->nullable();
+            $table->foreign('regional_id')->references('id')->on('regionals')->onDelete('set null');
+//            $table->foreignId('classification_id')->constrained();
+            $table->unsignedBigInteger('classification_id')->nullable();
+            $table->foreign('classification_id')->references('id')->on('classifications')->onDelete('set null');
+//            $table->foreignId('league_id')->constrained();
+            $table->unsignedBigInteger('league_id')->nullable();
+            $table->foreign('league_id')->references('id')->on('leagues')->onDelete('set null');
             $table->string('name');
             $table->string('address')->nullable();
             $table->string('city')->nullable();

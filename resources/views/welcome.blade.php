@@ -10,6 +10,7 @@
         <script defer src="http://alpine.test/packages/ui/dist/cdn.js"></script>
     </head>
     <body>
+   <livewire:logout />
     <main class="flex justify-center items-start pt-24 bg-slate-200 min-h-screen text-slate-800">
         <livewire:golf-score-form />
     </main>

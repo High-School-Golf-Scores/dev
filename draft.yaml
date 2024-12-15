@@ -13,7 +13,7 @@ models:
 #      hasMany: Coach
 
   Player:
-    school_id: id foreign:schools constrained onDelete
+    school_id: id foreign:schools constrained
     first_name: string
     last_name: string
     grad_year: integer
@@ -23,7 +23,7 @@ models:
       hasMany: Stat
 
   Coach:
-    school_id: id foreign:schools constrained onDelete
+    school_id: id foreign:schools constrained
     name: string
     active: bool
     relationships:
@@ -32,7 +32,7 @@ models:
 
 
   Team:
-    school_id: id foreign:schools constrained onDelete
+    school_id: id foreign:schools constrained
     level: integer
     relationships:
       belongsTo: School
@@ -40,9 +40,9 @@ models:
 
 
   School:
-    regional_id: id foreign:regionals constrained onDelete
-    classification_id: id foreign:classifications constrained onDelete
-    league_id: id foreign:leagues constrained onDelete
+    regional_id: id foreign:regionals constrained
+    classification_id: id foreign:classifications constrained
+    league_id: id foreign:leagues constrained
     name: string
     address: string nullable
     city: string nullable
@@ -73,14 +73,14 @@ models:
 
 
   Tees:
-    course_id: id foreign:course constrained onDelete
+    course_id: id foreign:course constrained
     name: string
     timestamp: false
     relationships:
       belongsTo: Course
 
   Tournament:
-    coach_id: id foreign:coaches constrained onDelete
+    coach_id: id foreign:coaches constrained
     name: string
     date: date
     course_id: integer
@@ -118,8 +118,8 @@ models:
       hasMany: Hole, Tees, Tournament
   #
   Card:
-    tournament_id: id foreign:tournaments constrained onDelete
-    round_id: id foreign:rounds constrained onDelete
+    tournament_id: id foreign:tournaments constrained
+    round_id: id foreign:rounds constrained
     card_number: integer
     starting_hole: integer
     tee_time: string
@@ -130,7 +130,7 @@ models:
 
   #
   Hole:
-    course_id: id foreign:course constrained onDelete
+    course_id: id foreign:course constrained
     hole_number: integer
     par: integer
     yardage_front_tee: integer nullable
@@ -140,14 +140,14 @@ models:
       belongsTo: Course
   #
   Round:
-    tournament_id: id foreign:tournaments constrained onDelete
+    tournament_id: id foreign:tournaments constrained
     number: integer
     relationships:
       belongsTo: Tournament
       hasMany: Card
   #
   Stat:
-    player_id: id foreign:players constrained onDelete
+    player_id: id foreign:players constrained
     gir: integer nullable
     putts: integer nullable
     fairways: integer nullable
@@ -155,8 +155,8 @@ models:
       belongsTo: Player
 
   Tag:
-    school_id: id foreign:schools constrained onDelete
-    tournament_id: id foreign:tournaments constrained onDelete
+    school_id: id foreign:schools constrained
+    tournament_id: id foreign:tournaments constrained
     name: string
     relationships:
       belongsToMany: School, Tournament
@@ -170,6 +170,21 @@ models:
     published_at: timestamp
     relationships:
       belongsTo: User
+
+  GolfHole:
+    course_id: integer nullable
+    hole_number: integer
+    par: integer
+    distance_red: integer
+    distance_white: integer
+    distance_blue: integer
+
+  GolfScore:
+    tournament_id: id foreign:tournaments constrained
+    player_id: id foreign:players constrained
+    school_id: id foreign:schools constrained
+    hole_number: integer
+    score: integer
 
 seeders: Player, Coach, Tournament, Card
 

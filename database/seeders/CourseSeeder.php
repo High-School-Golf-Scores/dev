@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tournament;
+
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 
-class TournamentSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Tournament::factory()->count(1)->create();
+        Course::factory()->count(5)->create();
     }
 }

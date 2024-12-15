@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('golf_scores', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('tournament_id');
-            $table->unsignedBigInteger('player_id');
-            $table->unsignedBigInteger('school_id');
-            $table->integer('hole_number');
-            $table->integer('score');
-            $table->timestamps();
-        });
+//        Schema::create('golf_scores', function (Blueprint $table) {
+//            $table->id();
+//            $table->unsignedBigInteger('tournament_id');
+//            $table->unsignedBigInteger('player_id');
+//            $table->unsignedBigInteger('school_id');
+//            $table->integer('hole_number');
+//            $table->integer('score');
+//            $table->timestamps();
+//        });
     }
 
     /**

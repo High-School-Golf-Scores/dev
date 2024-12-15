@@ -21,13 +21,34 @@ class DatabaseSeeder extends Seeder
             PlayerSeeder::class,
             PostSeeder::class,
             TournamentSeeder::class,
+            SchoolTournamentSeeder::class,
+       ]);
+
+        \App\Models\Coach::create([
+//            'name' => 'Greg Hobelmann',
+//            'active' => '1',
+//            'school_id' => '1', // school_id
         ]);
         \App\Models\User::create([
-            'first_name' => 'Jelly',
-            'last_name' => 'McSquid',
-            'email' => 'jelly@laravel.livewire.com',
+            'first_name' => 'Greg',
+            'last_name' => 'Hobelmann',
+            'email' => 'greg@gmail.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'school_id' => '1', // school_id
         ]);
+        \App\Models\Course::create([
+            'name' => 'Smith Center Muni',
+            'par' => '71',
+            'slope' => '121.1',
+            'front_tee_rating' => '68.2',
+            'middle_tee_rating' => '70.1',
+            'back_tee_rating' => '73.8',
+            'front_tee_yardage' => '5421',
+            'middle_tee_yardage' => '5689',
+            'back_tee_yardage' => '6022',
+
+        ]);
+
 
         \App\Models\Store::create([
             'name' => 'MLM Industries',

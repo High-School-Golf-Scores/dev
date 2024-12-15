@@ -4,17 +4,19 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\GolfScore;
 use App\Models\Player;
-use App\Models\Stat;
+use App\Models\School;
+use App\Models\Tournament;
 
-class StatFactory extends Factory
+class GolfScoreFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Stat::class;
+    protected $model = GolfScore::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +24,11 @@ class StatFactory extends Factory
     public function definition(): array
     {
         return [
+            'tournament_id' => Tournament::factory(),
             'player_id' => Player::factory(),
-            'gir' => $this->faker->numberBetween(0, 18),
-            'putts' => $this->faker->numberBetween(0, 72),
-            'fairways' => $this->faker->numberBetween(0, 18),
+            'school_id' => School::factory(),
+            'hole_number' => $this->faker->numberBetween(1, 18),
+            'score' => $this->faker->numberBetween(1, 12),
         ];
     }
 }

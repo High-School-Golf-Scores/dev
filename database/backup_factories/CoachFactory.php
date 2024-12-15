@@ -4,17 +4,17 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Course;
-use App\Models\Tees;
+use App\Models\Coach;
+use App\Models\School;
 
-class TeesFactory extends Factory
+class CoachFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Tees::class;
+    protected $model = Coach::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,9 @@ class TeesFactory extends Factory
     public function definition(): array
     {
         return [
-            'course_id' => Course::factory(),
-            'name' => $this->faker->randomElement(['Red', 'White', 'Blue']),
-            'timestamp' => \Symfony\Component\Clock\now(),
+            'school_id' => School::factory(),
+            'name' => $this->faker->randomElement(['Smith Center', 'Phillipsburg', 'Norton']),
+            'active' => '1',
         ];
     }
 }

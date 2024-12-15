@@ -7,7 +7,7 @@
             Dashboard
         </a>
 
-        <livewire:logout />
+
 
     @else
         <a
