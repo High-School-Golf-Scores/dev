@@ -3,7 +3,7 @@
         <div class="flex justify-between">
             <h1 class="text-3xl font-semibold leading-6 text-slate-900">Tournaments</h1>
 
-{{--            <livewire:add-tournament-dialog @added="$refresh" />--}}
+            <livewire:add-tournament-dialog @added="$refresh" />
         </div>
         <div>Tournament Level</div>
         <table class="min-w-full divide-y divide-slate-300 bg-white shadow rounded-xl">

@@ -15,11 +15,19 @@ return new class extends Migration
 
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('school_id')->constrained();
+            $table->foreignId('school_id')->constrained()->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('grad_year');
             $table->boolean('active');
+            $table->timestamps();
+        });
+
+        // Assign Players to Scorecard Table.
+        Schema::create('assignments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('player_id')->constrained()->onDelete('cascade');
+            $table->foreignId('card_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 

@@ -5,7 +5,7 @@
 
             <livewire:add-player-dialog @added="$refresh" />
         </div>
-
+{{--        {{ $user }}--}}
 {{--        {{ $players }}--}}
         <table class="min-w-full divide-y divide-slate-300 bg-white shadow rounded-xl">
             <thead>

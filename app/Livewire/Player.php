@@ -14,7 +14,7 @@ class Player extends Component
     public function render()
     {
         return view('livewire.player', [
-            'players' => (new Player)->all(),
+            'players' => auth()->user()->players
         ]);
     }
 }

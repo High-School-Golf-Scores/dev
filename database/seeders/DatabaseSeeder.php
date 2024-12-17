@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             TournamentSeeder::class,
             SchoolTournamentSeeder::class,
+            RoleSeeder::class,
        ]);
 
         \App\Models\Coach::create([

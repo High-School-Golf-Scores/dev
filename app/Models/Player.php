@@ -35,13 +35,31 @@ class Player extends Model
         'active' => 'boolean',
     ];
 
-    public function school(): BelongsTo
-    {
-        return $this->belongsTo(School::class);
-    }
+
 
     public function stats(): HasMany
     {
         return $this->hasMany(Stat::class);
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
+    public function coach()
+    {
+        return $this->belongsTo(User::class, 'school_id');
+    }
+
+    public function render()
+    {
+        $players = Player::where('school_id', auth()->user()->school_id)->get();
+        return view('livewire.players', ['players' => $players]);
     }
 }

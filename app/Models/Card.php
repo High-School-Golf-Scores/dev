@@ -40,7 +40,12 @@ class Card extends Model
         return $this->belongsTo(Round::class);
     }
 
-    public function tournament(): BelongsTo
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
+    public function tournament()
     {
         return $this->belongsTo(Tournament::class);
     }

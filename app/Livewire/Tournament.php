@@ -7,6 +7,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 
+
 #[Layout('layouts.app')]
 #[Title('Tournaments | KGCA')]
 class Tournament extends Component

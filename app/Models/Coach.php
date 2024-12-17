@@ -41,4 +41,9 @@ class Coach extends Model
     {
         return $this->hasMany(Tournament::class);
     }
+
+    public function players()
+    {
+        return $this->hasMany(Player::class, 'coach_id');
+    }
 }
